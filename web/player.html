@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>JavaDS-Lab 算法可视化播放器</title>
+<style>
+  :root {
+    --bg: #0f172a; --panel: #1e293b; --text: #e2e8f0; --muted: #94a3b8;
+    --accent: #38bdf8; --green: #4ade80; --orange: #fb923c; --red: #f87171;
+    --yellow: #facc15; --purple: #c084fc; --teal: #2dd4bf;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--panel); flex-wrap: wrap; }
+  header h1 { font-size: 16px; margin: 0; color: var(--accent); }
+  select, button, input[type=file] { background: #334155; color: var(--text); border: 1px solid #475569; border-radius: 6px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
+  button:hover, select:hover { border-color: var(--accent); }
+  main { padding: 8px 16px; }
+  #stage { width: 100%; height: 62vh; background: var(--panel); border-radius: 10px; }
+  svg { width: 100%; height: 100%; }
+  .controls { display: flex; align-items: center; gap: 8px; padding: 10px 16px; flex-wrap: wrap; }
+  .controls input[type=range] { flex: 1; }
+  .stepinfo { min-height: 44px; padding: 6px 16px 14px; font-size: 14px; color: var(--muted); }
+  .stepinfo b { color: var(--text); }
+  .op-tag { display: inline-block; background: var(--accent); color: #0f172a; font-weight: 600; border-radius: 4px; padding: 1px 8px; margin-right: 8px; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; padding: 0 16px 10px; font-size: 12px; color: var(--muted); }
+  .legend span::before { content: "■ "; }
+  .err { color: var(--red); }
+</style>
+</head>
+<body>
+<header>
+  <h1>JavaDS-Lab 播放器</h1>
+  <select id="traceSelect"><option value="">— 选择 trace —</option></select>
+  <label style="font-size:13px;color:var(--muted)">或从本地 JSON 加载：</label>
+  <input type="file" id="fileInput" accept=".json">
+  <span id="status" style="font-size:13px;color:var(--muted)"></span>
+</header>
+
+<main><div id="stage"></div></main>
+
+<div class="legend">
+  <span style="color:var(--yellow)">比较</span><span style="color:var(--orange)">交换/写入</span>
+  <span style="color:var(--purple)">基准</span><span style="color:var(--green)">已完成/最短</span>
+  <span style="color:var(--red)">当前活跃</span><span style="color:var(--teal)">新加入</span>
+  <span style="color:#64748b">淘汰/丢弃</span>
+</div>
+
+<div class="controls">
+  <button id="btnFirst" title="回到开头">⏮</button>
+  <button id="btnPrev" title="上一步（回退）">◀ 上一步</button>
+  <button id="btnPlay" title="自动播放/暂停">▶ 播放</button>
+  <button id="btnNext" title="下一步（单步）">下一步 ▶</button>
+  <button id="btnLast" title="跳到最后">⏭</button>
+  <input type="range" id="slider" min="0" max="0" value="0">
+  <span id="stepLabel">0 / 0</span>
+  <label style="font-size:13px;color:var(--muted)">速度</label>
+  <select id="speed">
+    <option value="2000">0.5×</option>
+    <option value="1000" selected>1×</option>
+    <option value="500">2×</option>
+    <option value="250">4×</option>
+  </select>
+</div>
+
+<div class="stepinfo" id="stepInfo">加载左侧或上方列表中的 trace 开始回放。</div>
+
+<script src="traces-bundle.js"></script>
+<script>
+"use strict";
+/* ================= 数据源 ================= */
+const TRACE_INDEX = [];       // [{name, loader}]
+const data = { trace: null, name: "", idx: 0, timer: null };
+
+(function buildIndex() {
+  const sel = document.getElementById("traceSelect");
+  const add = (name, loader) => {
+    TRACE_INDEX.push({ name, loader });
+    const o = document.createElement("option");
+    o.value = name; o.textContent = name;
+    sel.appendChild(o);
+  };
+  if (window.TRACE_BUNDLE) {
+    for (const name of Object.keys(window.TRACE_BUNDLE)) add(name, () => window.TRACE_BUNDLE[name]);
+  } else if (location.protocol.startsWith("http")) {
+    // 无 bundle 时从 ../trace/manifest.json 发现
+    fetch("../trace/manifest.json").then(r => r.json()).then(names => {
+      for (const n of names) add(n, async () => await (await fetch("../trace/" + n + ".json")).json());
+    });
+  }
+  sel.addEventListener("change", () => loadTrace(sel.value));
+  document.getElementById("fileInput").addEventListener("change", async e => {
+    const f = e.target.files[0];
+    if (!f) return;
+    const obj = JSON.parse(await f.text());
+    setTrace(obj, f.name.replace(/\.json$/, ""));
+  });
+})();
+
+/* ================= 状态标记颜色 ================= */
+const MARK = {
+  cmp: "#facc15", swap: "#fb923c", pivot: "#c084fc", sorted: "#4ade80",
+  active: "#f87171", frontier: "#2dd4bf", settled: "#4ade80", visited: "#60a5fa",
+  discover: "#2dd4bf", discard: "#64748b", unknown: "#334155",
+  occupied: "#3b4b63", H: "#f87171", T: "#2dd4bf", root: "#c084fc",
+  R: "#f87171", B: "#334155", end: "#4ade80", inStack: "#facc15",
+  todo: "#334155", inProgress: "#facc15", done: "#4ade80",
+  inTree: "#4ade80", joining: "#2dd4bf", improving: "#2dd4bf",
+  released: "#2dd4bf", "sorted,": "#4ade80"
+};
+function markColor(s) { return s && (MARK[String(s).split(",")[0]] || "#3b4b63"); }
+
+/* ================= 主渲染 ================= */
+const svgNS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, text) {
+  const e = document.createElementNS(svgNS, tag);
+  for (const k in (attrs || {})) e.setAttribute(k, attrs[k]);
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function render(snapshot, hl) {
+  const stage = document.getElementById("stage");
+  stage.innerHTML = "";
+  const svg = el("svg", { viewBox: "0 0 900 480", preserveAspectRatio: "xMidYMid meet" });
+  stage.appendChild(svg);
+  if (!snapshot) { svg.appendChild(el("text", { x: 450, y: 240, fill: "#94a3b8", "text-anchor": "middle" }, "无快照")); return; }
+  switch (snapshot.kind) {
+    case "array": renderArray(svg, snapshot, hl); break;
+    case "linked": renderLinked(svg, snapshot); break;
+    case "hash": renderHash(svg, snapshot); break;
+    case "heap": renderHeap(svg, snapshot); break;
+    case "tree": renderTree(svg, snapshot); break;
+    case "graph": renderGraph(svg, snapshot, hl); break;
+    case "matrix": renderMatrix(svg, snapshot); break;
+    case "uf": renderUF(svg, snapshot); break;
+    case "monostack": renderMonoStack(svg, snapshot); break;
+    default:
+      svg.appendChild(el("text", { x: 450, y: 240, fill: "#f87171", "text-anchor": "middle" }, "未知快照类型: " + snapshot.kind));
+  }
+}
+
+function label(svg, text, x = 450, y = 26) {
+  svg.appendChild(el("text", { x, y, fill: "#94a3b8", "text-anchor": "middle", "font-size": 15 }, text ?? ""));
+}
+
+function drawCell(svg, x, y, w, h, v, s) {
+  svg.appendChild(el("rect", { x, y, width: w, height: h, rx: 5,
+    fill: markColor(s) || "#e2e8f0", stroke: s ? "#0f172a" : "#475569", "stroke-width": s ? 2 : 1 }));
+  svg.appendChild(el("text", { x: x + w / 2, y: y + h / 2 + 5, "text-anchor": "middle",
+    "font-size": 14, fill: s && s !== "unknown" ? "#0f172a" : "#0f172a" }, String(v)));
+}
+
+function renderArray(svg, snap, hl) {
+  label(svg, snap.label);
+  const cells = snap.cells || [];
+  const n = cells.length, w = Math.min(70, 840 / Math.max(n, 1)), h = 44;
+  const total = n * w, x0 = Math.max(30, (900 - total) / 2), y0 = 210;
+  cells.forEach((c, i) => {
+    let s = c.s;
+    if (hl && hl.cell === i) s = "active";
+    drawCell(svg, x0 + i * w, y0, w - 4, h, c.v, s);
+    svg.appendChild(el("text", { x: x0 + i * w + (w - 4) / 2, y: y0 + h + 16, "text-anchor": "middle", "font-size": 10, fill: "#64748b" }, i));
+  });
+}
+
+function renderLinked(svg, snap) {
+  label(svg, "链表（→ 为 next 指针）");
+  const nodes = snap.nodes || [];
+  const n = nodes.length, w = Math.min(90, 800 / Math.max(n, 1)), h = 44, y0 = 218;
+  const x0 = Math.max(20, (900 - n * w - 60) / 2);
+  svg.appendChild(el("text", { x: x0 - 12, y: y0 + h / 2 + 5, "text-anchor": "end", "font-size": 13, fill: "#94a3b8" }, "head"));
+  nodes.forEach((c, i) => {
+    drawCell(svg, x0 + i * w, y0, w - 14, h, c.v, c.s);
+    if (i < n - 1) arrow(svg, x0 + i * w + (w - 14), y0 + h / 2, x0 + (i + 1) * w, y0 + h / 2);
+  });
+  arrow(svg, x0 + (n - 1) * w + (w - 14), y0 + h / 2, x0 + n * w - 8, y0 + h / 2);
+  svg.appendChild(el("text", { x: x0 + n * w + 2, y: y0 + h / 2 + 5, "font-size": 13, fill: "#94a3b8" }, "∅"));
+}
+
+function arrow(svg, x1, y1, x2, y2, color, marker) {
+  const id = "arr" + Math.random().toString(36).slice(2, 7);
+  const defs = el("defs");
+  const m = el("marker", { id, markerWidth: 8, markerHeight: 8, refX: 7, refY: 4, orient: "auto" });
+  m.appendChild(el("path", { d: "M0,0 L8,4 L0,8 z", fill: color || "#94a3b8" }));
+  defs.appendChild(m);
+  svg.appendChild(defs);
+  svg.appendChild(el("line", { x1, y1, x2: x2 - 2, y2, stroke: color || "#94a3b8", "stroke-width": 1.6, "marker-end": `url(#${id})` }));
+}
+
+function renderHash(svg, snap) {
+  label(svg, `哈希表  size=${snap.size}  capacity=${snap.capacity}`);
+  const buckets = snap.buckets || [];
+  const rowH = Math.min(34, 400 / buckets.length), w = 640, x0 = 130, y0 = 60;
+  buckets.forEach((chain, b) => {
+    const y = y0 + b * rowH;
+    svg.appendChild(el("rect", { x: x0, y: y + 2, width: 56, height: rowH - 5, rx: 4, fill: "#334155" }));
+    svg.appendChild(el("text", { x: x0 + 28, y: y + rowH / 2, "text-anchor": "middle", "font-size": 11, fill: "#94a3b8" }, "bucket " + b));
+    let cx = x0 + 66;
+    (chain || []).forEach(e => {
+      const txt = e.v === null || e.v === undefined ? `${e.k}` : `${e.k}:${e.v}`;
+      const wBox = Math.min(150, 14 + txt.length * 9);
+      svg.appendChild(el("rect", { x: cx, y: y + 2, width: wBox, height: rowH - 5, rx: 4, fill: "#e2e8f0" }));
+      svg.appendChild(el("text", { x: cx + wBox / 2, y: y + rowH / 2, "text-anchor": "middle", "font-size": 11, fill: "#0f172a" }, txt));
+      cx += wBox + 14;
+      arrow(svg, cx - 14, y + rowH / 2, cx - 2, y + rowH / 2);
+      if (cx > 860) { svg.appendChild(el("text", { x: cx, y: y + rowH / 2, "font-size": 11, fill: "#f87171" }, "…")); return; }
+    });
+  });
+}
+
+function renderHeap(svg, snap) {
+  label(svg, `堆（完全二叉树，size=${snap.size}）`);
+  const cells = (snap.cells || []).slice(0, snap.size);
+  const depth = Math.ceil(Math.log2(cells.length + 1)) || 1;
+  const draw = (i, x, y, span) => {
+    if (i >= cells.length) return;
+    drawCell(svg, x - 21, y, 42, 34, cells[i].v, cells[i].s);
+    if (i > 0) {
+      const pi = (i - 1) >> 1;
+      // 连线由父节点画，这里跳过
+    }
+    const yChild = y + 62;
+    if (2 * i + 1 < cells.length) {
+      svg.appendChild(el("line", { x1: x, y1: y + 34, x2: x - span / 2, y2: yChild, stroke: "#475569" }));
+      draw(2 * i + 1, x - span / 2, yChild, span / 2);
+    }
+    if (2 * i + 2 < cells.length) {
+      svg.appendChild(el("line", { x1: x, y1: y + 34, x2: x + span / 2, y2: yChild, stroke: "#475569" }));
+      draw(2 * i + 2, x + span / 2, yChild, span / 2);
+    }
+  };
+  draw(0, 450, 50, 380);
+}
+
+function renderTree(svg, snap) {
+  label(svg, snap.label);
+  const root = snap.root;
+  if (!root) { svg.appendChild(el("text", { x: 450, y: 240, "text-anchor": "middle", fill: "#94a3b8" }, "空树")); return; }
+  // 中序位置定 x，深度定 y
+  let leafX = 0; const pos = new Map();
+  (function assign(n, depth) {
+    if (!n) return 0;
+    const kids = n.c || [];
+    let x;
+    if (kids.filter(Boolean).length === 0) { x = leafX++; }
+    else {
+      const xs = kids.filter(Boolean).map(k => assign(k, depth + 1));
+      x = (xs[0] + xs[xs.length - 1]) / 2;
+    }
+    pos.set(n, { x, depth });
+    return x;
+  })(root, 0);
+  const W = 840, x0 = 30, yGap = Math.min(78, 380 / (Math.max(1, [...pos.values()].reduce((m, p) => Math.max(m, p.depth), 0)) + 1));
+  const px = n => x0 + (pos.get(n).x + 0.5) * (W / Math.max(leafX, 1));
+  const py = n => 46 + pos.get(n).depth * yGap;
+  (function edges(n) {
+    if (!n) return;
+    for (const k of (n.c || [])) if (k) { svg.appendChild(el("line", { x1: px(n), y1: py(n) + 18, x2: px(k), y2: py(k) - 4, stroke: "#475569" })); edges(k); }
+  })(root);
+  (function nodes(n) {
+    if (!n) return;
+    const isRB = n.color === "R" || n.color === "B";
+    const keys = (n.keys || []).join(" ");
+    const wBox = Math.max(40, 16 + keys.length * 9), hBox = 26;
+    const fill = isRB ? (n.color === "R" ? "#f87171" : "#475569") : markColor(n.color) || "#e2e8f0";
+    svg.appendChild(el("rect", { x: px(n) - wBox / 2, y: py(n) - 4, width: wBox, height: hBox, rx: isRB ? 4 : 10,
+      fill, stroke: n.hl ? "#f87171" : "#0f172a", "stroke-width": n.hl ? 3 : 1 }));
+    svg.appendChild(el("text", { x: px(n), y: py(n) + 13, "text-anchor": "middle", "font-size": 12,
+      fill: isRB && n.color === "B" ? "#e2e8f0" : "#0f172a" }, keys));
+    if (n.color === "end") svg.appendChild(el("text", { x: px(n), y: py(n) - 8, "text-anchor": "middle", "font-size": 9, fill: "#4ade80" }, "end"));
+    for (const k of (n.c || [])) nodes(k);
+  })(root);
+  // Trie / B树 孩子可能带 ch 标记
+}
+
+function renderGraph(svg, snap, hl) {
+  label(svg, `图  n=${snap.n}  ${snap.directed ? "有向" : "无向"}`);
+  const nodes = snap.nodes || [], edges = snap.edges || [];
+  const edgeHl = hl && hl.edge ? (Array.isArray(hl.edge) ? hl.edge.join(",") : String(hl.edge)) : null;
+  edges.forEach(e => {
+    const a = nodes[e.u], b = nodes[e.v];
+    if (!a || !b) return;
+    const isHl = edgeHl && (edgeHl === `${e.u},${e.v}` || edgeHl === `${e.v},${e.u}`);
+    if (snap.directed) arrow(svg, a.x, a.y, b.x, b.y, isHl ? "#f87171" : "#475569");
+    else svg.appendChild(el("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, stroke: isHl ? "#f87171" : "#475569", "stroke-width": isHl ? 3 : 1.4 }));
+    if (e.w !== undefined && e.w !== 1) {
+      svg.appendChild(el("text", { x: (a.x + b.x) / 2 + 6, y: (a.y + b.y) / 2 - 6, "font-size": 11, fill: isHl ? "#f87171" : "#94a3b8" }, e.w));
+    }
+  });
+  nodes.forEach((nd, i) => {
+    const r = 20;
+    svg.appendChild(el("circle", { cx: nd.x, cy: nd.y, r, fill: markColor(nd.s) || "#e2e8f0", stroke: "#0f172a" }));
+    svg.appendChild(el("text", { x: nd.x, y: nd.y + 5, "text-anchor": "middle", "font-size": 13,
+      fill: ["visited", "active", "settled", "inProgress"].includes(nd.s) ? "#0f172a" : "#0f172a" }, nd.label));
+    if (snap.dist) {
+      const d = snap.dist[i];
+      svg.appendChild(el("text", { x: nd.x, y: nd.y - r - 6, "text-anchor": "middle", "font-size": 12, fill: "#38bdf8" }, "d=" + d));
+    }
+  });
+}
+
+function renderMatrix(svg, snap) {
+  label(svg, snap.label);
+  const rows = snap.rows || [];
+  const cw = Math.min(58, 820 / Math.max(...rows.map(r => r.length), 1));
+  const ch = Math.min(40, 380 / rows.length);
+  const x0 = (900 - rows[0].length * cw) / 2, y0 = Math.max(40, (480 - rows.length * ch) / 2);
+  rows.forEach((row, i) => row.forEach((c, j) => {
+    drawCell(svg, x0 + j * cw, y0 + i * ch, cw - 3, ch - 3, c.v, c.s);
+  }));
+  svg.appendChild(el("text", { x: x0 - 10, y: y0 - 8, "font-size": 11, fill: "#64748b" }, "行=i 列=j"));
+}
+
+function renderUF(svg, snap) {
+  label(svg, "并查集 parent 数组（含自身者为根）");
+  const parent = snap.parent || [], aux = snap.aux || [];
+  const n = parent.length, w = Math.min(66, 840 / n), h = 40, y0 = 170;
+  const x0 = (900 - n * w) / 2;
+  parent.forEach((c, i) => {
+    drawCell(svg, x0 + i * w, y0, w - 4, h, c.v, c.s);
+    svg.appendChild(el("text", { x: x0 + i * w + (w - 4) / 2, y: y0 - 8, "text-anchor": "middle", "font-size": 10, fill: "#64748b" }, i));
+    if (aux[i]) svg.appendChild(el("text", { x: x0 + i * w + (w - 4) / 2, y: y0 + h + 16, "text-anchor": "middle", "font-size": 10, fill: "#38bdf8" }, aux[i].v));
+    // parent 指针箭头
+    if (c.v !== i && c.v >= 0 && c.v < n) {
+      const from = x0 + i * w + (w - 4) / 2, to = x0 + c.v * w + (w - 4) / 2;
+      arrow(svg, from, y0 + h + 26, to, y0 + h + 26, "#475569");
+    }
+  });
+  svg.appendChild(el("text", { x: 450, y: y0 + h + 52, "text-anchor": "middle", "font-size": 11, fill: "#64748b" }, "下方蓝色为 size/rank；箭头指向父节点"));
+}
+
+function renderMonoStack(svg, snap) {
+  if (snap.text !== undefined) { renderKMP(svg, snap); return; }
+  label(svg, "单调栈（数组 + 栈内容 + 结果）");
+  if (snap.array) { snap.array.label = "数组"; renderArray(svg, snap.array, null); }
+  if (snap.res) {
+    const cells = snap.res.cells || [];
+    const w = Math.min(70, 840 / Math.max(cells.length, 1)), y0 = 320;
+    const x0 = (900 - cells.length * w) / 2;
+    svg.appendChild(el("text", { x: 60, y: y0 + 22, "font-size": 12, fill: "#94a3b8" }, "res"));
+    cells.forEach((c, i) => drawCell(svg, x0 + i * w, y0, w - 4, 40, c.v, c.s));
+  }
+  if (snap.stack && snap.stack.length) {
+    svg.appendChild(el("text", { x: 450, y: 410, "text-anchor": "middle", "font-size": 13, fill: "#facc15" },
+      "栈（底→顶）: " + snap.stack.map(c => `[${c.v}]`).join(" ")));
+  }
+}
+
+function renderKMP(svg, snap) {
+  label(svg, "KMP：主串指针 i，模式串指针 j");
+  const rows = [["主串", snap.text], ["模式串", snap.pattern]];
+  let y = 80;
+  rows.forEach(([name, arr]) => {
+    svg.appendChild(el("text", { x: 90, y: y + 24, "text-anchor": "end", "font-size": 13, fill: "#94a3b8" }, name));
+    const cells = (arr && arr.cells) || [];
+    cells.forEach((c, i) => drawCell(svg, 110 + i * 46, y, 42, 40, c.v, c.s));
+    y += 70;
+  });
+  if (snap.next) {
+    svg.appendChild(el("text", { x: 90, y: y + 24, "text-anchor": "end", "font-size": 13, fill: "#94a3b8" }, "next"));
+    (snap.next.cells || []).forEach((c, i) => drawCell(svg, 110 + i * 46, y, 42, 32, c.v, null));
+  }
+  svg.appendChild(el("text", { x: 450, y: 380, "text-anchor": "middle", "font-size": 16, fill: "#38bdf8" },
+    `i = ${snap.i}   j = ${snap.j}`));
+}
+
+/* ================= 播放控制 ================= */
+function setTrace(traceObj, name) {
+  if (!traceObj || !traceObj.steps) { setStatus("无效的 trace 文件", true); return; }
+  data.trace = traceObj; data.name = name; data.idx = -1;
+  const slider = document.getElementById("slider");
+  slider.max = traceObj.steps.length - 1; slider.value = 0;
+  goto(-1);
+  setStatus(`已加载 “${name}”：${traceObj.steps.length} 步，类型 ${traceObj.meta && traceObj.meta.kind}`);
+}
+
+function loadTrace(name) {
+  const entry = TRACE_INDEX.find(t => t.name === name);
+  if (!entry) return;
+  stop();
+  Promise.resolve(entry.loader()).then(obj => setTrace(obj, name)).catch(e => setStatus("加载失败: " + e.message, true));
+}
+
+function goto(i) {
+  if (!data.trace) return;
+  data.idx = Math.max(-1, Math.min(data.trace.steps.length - 1, i));
+  const steps = data.trace.steps;
+  const snap = data.idx < 0 ? steps[0].before : steps[data.idx].after;
+  const step = data.idx < 0 ? null : steps[data.idx];
+  render(snap, step ? step.hl : null);
+  document.getElementById("slider").value = data.idx;
+  document.getElementById("stepLabel").textContent = `${data.idx + 1} / ${steps.length}`;
+  const info = document.getElementById("stepInfo");
+  if (!step) {
+    info.innerHTML = `<b>初始状态</b>（按“下一步”开始）${data.trace.meta && data.trace.meta.title ? " — " + data.trace.meta.title : ""}`;
+  } else {
+    const args = step.args ? Object.entries(step.args).map(([k, v]) => `${k}=${JSON.stringify(v)}`).join("  ") : "";
+    info.innerHTML = `<span class="op-tag">${step.op}</span><b>${args}</b>${step.note ? "　— " + step.note : ""}`;
+  }
+}
+
+function stop() {
+  if (data.timer) { clearInterval(data.timer); data.timer = null; }
+  document.getElementById("btnPlay").textContent = "▶ 播放";
+}
+function togglePlay() {
+  if (data.timer) { stop(); return; }
+  if (!data.trace) return;
+  if (data.idx >= data.trace.steps.length - 1) goto(-1);
+  const speed = parseInt(document.getElementById("speed").value, 10);
+  data.timer = setInterval(() => {
+    if (data.idx >= data.trace.steps.length - 1) stop();
+    else goto(data.idx + 1);
+  }, speed);
+  document.getElementById("btnPlay").textContent = "⏸ 暂停";
+}
+
+function setStatus(msg, isErr) {
+  const s = document.getElementById("status");
+  s.textContent = msg;
+  s.className = isErr ? "err" : "";
+}
+
+document.getElementById("btnFirst").onclick = () => { stop(); goto(-1); };
+document.getElementById("btnPrev").onclick = () => { stop(); goto(data.idx - 1); };
+document.getElementById("btnNext").onclick = () => { stop(); goto(data.idx + 1); };
+document.getElementById("btnLast").onclick = () => { stop(); goto(data.trace ? data.trace.steps.length - 1 : -1); };
+document.getElementById("btnPlay").onclick = togglePlay;
+document.getElementById("slider").addEventListener("input", e => { stop(); goto(parseInt(e.target.value, 10)); });
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") { stop(); goto(data.idx + 1); }
+  if (e.key === "ArrowLeft") { stop(); goto(data.idx - 1); }
+  if (e.key === " ") { e.preventDefault(); togglePlay(); }
+});
+
+/* 测试钩子：浏览器自动化验证用 */
+window.__player = {
+  traceNames: () => TRACE_INDEX.map(t => t.name),
+  load: name => { loadTrace(name); },
+  goto: i => goto(i),
+  current: () => ({ name: data.name, idx: data.idx, total: data.trace ? data.trace.steps.length : 0, svgChildren: document.querySelector("#stage svg") ? document.querySelector("#stage svg").childElementCount : 0 }),
+  lastError: null
+};
+window.addEventListener("error", e => { window.__player.lastError = String(e.message); });
+</script>
+</body>
+</html>

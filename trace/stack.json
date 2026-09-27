@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "kind": "array",
+    "title": "顺序栈 ArrayStack"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "push",
+      "before": {
+        "kind": "array",
+        "label": "ArrayStack(top=0)",
+        "cells": []
+      },
+      "args": {
+        "value": "a"
+      },
+      "hl": {
+        "top": 0
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayStack(top=1)",
+        "cells": [
+          {
+            "v": "a"
+          }
+        ]
+      }
+    },
+    {
+      "i": 1,
+      "op": "push",
+      "before": {
+        "kind": "array",
+        "label": "ArrayStack(top=1)",
+        "cells": [
+          {
+            "v": "a"
+          }
+        ]
+      },
+      "args": {
+        "value": "b"
+      },
+      "hl": {
+        "top": 1
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayStack(top=2)",
+        "cells": [
+          {
+            "v": "a"
+          },
+          {
+            "v": "b"
+          }
+        ]
+      }
+    },
+    {
+      "i": 2,
+      "op": "push",
+      "before": {
+        "kind": "array",
+        "label": "ArrayStack(top=2)",
+        "cells": [
+          {
+            "v": "a"
+          },
+          {
+            "v": "b"
+          }
+        ]
+      },
+      "args": {
+        "value": "c"
+      },
+      "hl": {
+        "top": 2
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayStack(top=3)",
+        "cells": [
+          {
+            "v": "a"
+          },
+          {
+            "v": "b"
+          },
+          {
+            "v": "c"
+          }
+        ]
+      }
+    },
+    {
+      "i": 3,
+      "op": "pop",
+      "before": {
+        "kind": "array",
+        "label": "ArrayStack(top=3)",
+        "cells": [
+          {
+            "v": "a"
+          },
+          {
+            "v": "b"
+          },
+          {
+            "v": "c"
+          }
+        ]
+      },
+      "hl": {
+        "top": 2
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayStack(top=2)",
+        "cells": [
+          {
+            "v": "a"
+          },
+          {
+            "v": "b"
+          }
+        ]
+      }
+    },
+    {
+      "i": 4,
+      "op": "push",
+      "before": {
+        "kind": "array",
+        "label": "ArrayStack(top=2)",
+        "cells": [
+          {
+            "v": "a"
+          },
+          {
+            "v": "b"
+          }
+        ]
+      },
+      "args": {
+        "value": "d"
+      },
+      "hl": {
+        "top": 2
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayStack(top=3)",
+        "cells": [
+          {
+            "v": "a"
+          },
+          {
+            "v": "b"
+          },
+          {
+            "v": "d"
+          }
+        ]
+      }
+    }
+  ]
+}

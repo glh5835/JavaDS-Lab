@@ -1,0 +1,642 @@
+{
+  "meta": {
+    "kind": "tree",
+    "title": "AVL 树（插入触发旋转）"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=0, h=0)",
+        "root": null
+      },
+      "args": {
+        "key": 30
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=1, h=1)",
+        "root": {
+          "keys": [
+            30
+          ],
+          "c": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "i": 1,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=1, h=1)",
+        "root": {
+          "keys": [
+            30
+          ],
+          "c": [
+            null,
+            null
+          ]
+        }
+      },
+      "args": {
+        "key": 20
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=2, h=2)",
+        "root": {
+          "keys": [
+            30
+          ],
+          "c": [
+            {
+              "keys": [
+                20
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            null
+          ]
+        }
+      }
+    },
+    {
+      "i": 2,
+      "op": "rotate-right",
+      "args": {
+        "pivot": 20
+      },
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=3, h=1)",
+        "root": {
+          "keys": [
+            30
+          ],
+          "c": [
+            null,
+            null
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=3, h=1)",
+        "root": {
+          "keys": [
+            30
+          ],
+          "c": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "i": 2,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=2, h=2)",
+        "root": {
+          "keys": [
+            30
+          ],
+          "c": [
+            {
+              "keys": [
+                20
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            null
+          ]
+        }
+      },
+      "args": {
+        "key": 10
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=3, h=2)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 4,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=3, h=2)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 40
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=4, h=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 5,
+      "op": "rotate-left",
+      "args": {
+        "pivot": 40
+      },
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=5, h=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=5, h=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 5,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=4, h=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 50
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=5, h=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                40
+              ],
+              "c": [
+                {
+                  "keys": [
+                    30
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    50
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 7,
+      "op": "rotate-right",
+      "args": {
+        "pivot": 30
+      },
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=6, h=4)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                40
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    50
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=6, h=4)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                40
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    50
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 8,
+      "op": "rotate-left",
+      "args": {
+        "pivot": 30
+      },
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=6, h=2)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                25
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=6, h=2)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                25
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 7,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "AVL(size=5, h=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                40
+              ],
+              "c": [
+                {
+                  "keys": [
+                    30
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    50
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 25
+      },
+      "after": {
+        "kind": "tree",
+        "label": "AVL(size=6, h=3)",
+        "root": {
+          "keys": [
+            30
+          ],
+          "c": [
+            {
+              "keys": [
+                20
+              ],
+              "c": [
+                {
+                  "keys": [
+                    10
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    25
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                40
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    50
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

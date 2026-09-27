@@ -1,0 +1,343 @@
+{
+  "meta": {
+    "kind": "array",
+    "title": "循环队列（容量 4，注意 head/tail 回绕）"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "CircularQueue(size=0/4, head=0, tail=0)",
+        "cells": [
+          {
+            "v": "·",
+            "s": "H,T"
+          },
+          {
+            "v": "·"
+          },
+          {
+            "v": "·"
+          },
+          {
+            "v": "·"
+          }
+        ]
+      },
+      "args": {
+        "value": 1
+      },
+      "after": {
+        "kind": "array",
+        "label": "CircularQueue(size=1/4, head=0, tail=1)",
+        "cells": [
+          {
+            "v": 1,
+            "s": "occupied,H"
+          },
+          {
+            "v": "·",
+            "s": "T"
+          },
+          {
+            "v": "·"
+          },
+          {
+            "v": "·"
+          }
+        ]
+      }
+    },
+    {
+      "i": 1,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "CircularQueue(size=1/4, head=0, tail=1)",
+        "cells": [
+          {
+            "v": 1,
+            "s": "occupied,H"
+          },
+          {
+            "v": "·",
+            "s": "T"
+          },
+          {
+            "v": "·"
+          },
+          {
+            "v": "·"
+          }
+        ]
+      },
+      "args": {
+        "value": 2
+      },
+      "after": {
+        "kind": "array",
+        "label": "CircularQueue(size=2/4, head=0, tail=2)",
+        "cells": [
+          {
+            "v": 1,
+            "s": "occupied,H"
+          },
+          {
+            "v": 2,
+            "s": "occupied"
+          },
+          {
+            "v": "·",
+            "s": "T"
+          },
+          {
+            "v": "·"
+          }
+        ]
+      }
+    },
+    {
+      "i": 2,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "CircularQueue(size=2/4, head=0, tail=2)",
+        "cells": [
+          {
+            "v": 1,
+            "s": "occupied,H"
+          },
+          {
+            "v": 2,
+            "s": "occupied"
+          },
+          {
+            "v": "·",
+            "s": "T"
+          },
+          {
+            "v": "·"
+          }
+        ]
+      },
+      "args": {
+        "value": 3
+      },
+      "after": {
+        "kind": "array",
+        "label": "CircularQueue(size=3/4, head=0, tail=3)",
+        "cells": [
+          {
+            "v": 1,
+            "s": "occupied,H"
+          },
+          {
+            "v": 2,
+            "s": "occupied"
+          },
+          {
+            "v": 3,
+            "s": "occupied"
+          },
+          {
+            "v": "·",
+            "s": "T"
+          }
+        ]
+      }
+    },
+    {
+      "i": 3,
+      "op": "poll",
+      "before": {
+        "kind": "array",
+        "label": "CircularQueue(size=3/4, head=0, tail=3)",
+        "cells": [
+          {
+            "v": 1,
+            "s": "occupied,H"
+          },
+          {
+            "v": 2,
+            "s": "occupied"
+          },
+          {
+            "v": 3,
+            "s": "occupied"
+          },
+          {
+            "v": "·",
+            "s": "T"
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "CircularQueue(size=2/4, head=1, tail=3)",
+        "cells": [
+          {
+            "v": "·",
+            "s": "occupied"
+          },
+          {
+            "v": 2,
+            "s": "occupied,H"
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": "·",
+            "s": "T"
+          }
+        ]
+      }
+    },
+    {
+      "i": 4,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "CircularQueue(size=2/4, head=1, tail=3)",
+        "cells": [
+          {
+            "v": "·",
+            "s": "occupied"
+          },
+          {
+            "v": 2,
+            "s": "occupied,H"
+          },
+          {
+            "v": 3
+          },
+          {
+            "v": "·",
+            "s": "T"
+          }
+        ]
+      },
+      "args": {
+        "value": 4
+      },
+      "after": {
+        "kind": "array",
+        "label": "CircularQueue(size=3/4, head=1, tail=0)",
+        "cells": [
+          {
+            "v": "·",
+            "s": "occupied,T"
+          },
+          {
+            "v": 2,
+            "s": "occupied,H"
+          },
+          {
+            "v": 3,
+            "s": "occupied"
+          },
+          {
+            "v": 4
+          }
+        ]
+      }
+    },
+    {
+      "i": 5,
+      "op": "poll",
+      "before": {
+        "kind": "array",
+        "label": "CircularQueue(size=3/4, head=1, tail=0)",
+        "cells": [
+          {
+            "v": "·",
+            "s": "occupied,T"
+          },
+          {
+            "v": 2,
+            "s": "occupied,H"
+          },
+          {
+            "v": 3,
+            "s": "occupied"
+          },
+          {
+            "v": 4
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "CircularQueue(size=2/4, head=2, tail=0)",
+        "cells": [
+          {
+            "v": "·",
+            "s": "occupied,T"
+          },
+          {
+            "v": "·",
+            "s": "occupied"
+          },
+          {
+            "v": 3,
+            "s": "H"
+          },
+          {
+            "v": 4
+          }
+        ]
+      }
+    },
+    {
+      "i": 6,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "CircularQueue(size=2/4, head=2, tail=0)",
+        "cells": [
+          {
+            "v": "·",
+            "s": "occupied,T"
+          },
+          {
+            "v": "·",
+            "s": "occupied"
+          },
+          {
+            "v": 3,
+            "s": "H"
+          },
+          {
+            "v": 4
+          }
+        ]
+      },
+      "args": {
+        "value": 5
+      },
+      "after": {
+        "kind": "array",
+        "label": "CircularQueue(size=3/4, head=2, tail=1)",
+        "cells": [
+          {
+            "v": 5,
+            "s": "occupied"
+          },
+          {
+            "v": "·",
+            "s": "occupied,T"
+          },
+          {
+            "v": 3,
+            "s": "occupied,H"
+          },
+          {
+            "v": 4
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,593 @@
+{
+  "meta": {
+    "kind": "tree",
+    "title": "B 树（t=2，节点分裂）"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=0)",
+        "root": {
+          "keys": [],
+          "c": []
+        }
+      },
+      "args": {
+        "key": 10
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=1)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": []
+        }
+      }
+    },
+    {
+      "i": 1,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=1)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": []
+        }
+      },
+      "args": {
+        "key": 20
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=2)",
+        "root": {
+          "keys": [
+            10,
+            20
+          ],
+          "c": []
+        }
+      }
+    },
+    {
+      "i": 2,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=2)",
+        "root": {
+          "keys": [
+            10,
+            20
+          ],
+          "c": []
+        }
+      },
+      "args": {
+        "key": 30
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=3)",
+        "root": {
+          "keys": [
+            10,
+            20,
+            30
+          ],
+          "c": []
+        }
+      }
+    },
+    {
+      "i": 3,
+      "op": "split-child",
+      "args": {
+        "upKey": 20
+      },
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=3)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": []
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=3)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": []
+        }
+      }
+    },
+    {
+      "i": 4,
+      "op": "split-root",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 3,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=3)",
+        "root": {
+          "keys": [
+            10,
+            20,
+            30
+          ],
+          "c": []
+        }
+      },
+      "args": {
+        "key": 40
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=4)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30,
+                40
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 6,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=4)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30,
+                40
+              ],
+              "c": []
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 50
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=5)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30,
+                40,
+                50
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 7,
+      "op": "split-child",
+      "args": {
+        "upKey": 40
+      },
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=5)",
+        "root": {
+          "keys": [
+            20,
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50
+              ],
+              "c": []
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=5)",
+        "root": {
+          "keys": [
+            20,
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 7,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=5)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30,
+                40,
+                50
+              ],
+              "c": []
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 60
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=6)",
+        "root": {
+          "keys": [
+            20,
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50,
+                60
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 9,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=6)",
+        "root": {
+          "keys": [
+            20,
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50,
+                60
+              ],
+              "c": []
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 70
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=7)",
+        "root": {
+          "keys": [
+            20,
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50,
+                60,
+                70
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 10,
+      "op": "merge",
+      "args": {
+        "downKey": 20
+      },
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=7)",
+        "root": {
+          "keys": [
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10,
+                20,
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50,
+                60,
+                70
+              ],
+              "c": []
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=7)",
+        "root": {
+          "keys": [
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10,
+                20,
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50,
+                60,
+                70
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 10,
+      "op": "remove",
+      "before": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=7)",
+        "root": {
+          "keys": [
+            20,
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50,
+                60,
+                70
+              ],
+              "c": []
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 20
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BTree(t=2, size=6)",
+        "root": {
+          "keys": [
+            40
+          ],
+          "c": [
+            {
+              "keys": [
+                10,
+                30
+              ],
+              "c": []
+            },
+            {
+              "keys": [
+                50,
+                60,
+                70
+              ],
+              "c": []
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

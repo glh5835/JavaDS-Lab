@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "kind": "array",
+    "title": "队列 ArrayQueue"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "ArrayQueue(size=0, cap=8, head=0)",
+        "cells": []
+      },
+      "args": {
+        "value": 1
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayQueue(size=1, cap=8, head=0)",
+        "cells": [
+          {
+            "v": 1
+          }
+        ]
+      }
+    },
+    {
+      "i": 1,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "ArrayQueue(size=1, cap=8, head=0)",
+        "cells": [
+          {
+            "v": 1
+          }
+        ]
+      },
+      "args": {
+        "value": 2
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayQueue(size=2, cap=8, head=0)",
+        "cells": [
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          }
+        ]
+      }
+    },
+    {
+      "i": 2,
+      "op": "poll",
+      "before": {
+        "kind": "array",
+        "label": "ArrayQueue(size=2, cap=8, head=0)",
+        "cells": [
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayQueue(size=1, cap=8, head=1)",
+        "cells": [
+          {
+            "v": 2
+          }
+        ]
+      }
+    },
+    {
+      "i": 3,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "ArrayQueue(size=1, cap=8, head=1)",
+        "cells": [
+          {
+            "v": 2
+          }
+        ]
+      },
+      "args": {
+        "value": 3
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayQueue(size=2, cap=8, head=1)",
+        "cells": [
+          {
+            "v": 2
+          },
+          {
+            "v": 3
+          }
+        ]
+      }
+    },
+    {
+      "i": 4,
+      "op": "poll",
+      "before": {
+        "kind": "array",
+        "label": "ArrayQueue(size=2, cap=8, head=1)",
+        "cells": [
+          {
+            "v": 2
+          },
+          {
+            "v": 3
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayQueue(size=1, cap=8, head=2)",
+        "cells": [
+          {
+            "v": 3
+          }
+        ]
+      }
+    },
+    {
+      "i": 5,
+      "op": "offer",
+      "before": {
+        "kind": "array",
+        "label": "ArrayQueue(size=1, cap=8, head=2)",
+        "cells": [
+          {
+            "v": 3
+          }
+        ]
+      },
+      "args": {
+        "value": 4
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayQueue(size=2, cap=8, head=2)",
+        "cells": [
+          {
+            "v": 3
+          },
+          {
+            "v": 4
+          }
+        ]
+      }
+    }
+  ]
+}

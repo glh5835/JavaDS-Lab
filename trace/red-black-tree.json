@@ -1,0 +1,621 @@
+{
+  "meta": {
+    "kind": "tree",
+    "title": "红黑树（变色与旋转）"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=0)",
+        "root": null
+      },
+      "args": {
+        "key": 10
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=1)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": [
+            null,
+            null
+          ],
+          "color": "B"
+        }
+      }
+    },
+    {
+      "i": 1,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=1)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": [
+            null,
+            null
+          ],
+          "color": "B"
+        }
+      },
+      "args": {
+        "key": 20
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=2)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": [
+            null,
+            {
+              "keys": [
+                20
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    },
+    {
+      "i": 2,
+      "op": "rotate-left",
+      "args": {
+        "pivot": 20
+      },
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    },
+    {
+      "i": 2,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=2)",
+        "root": {
+          "keys": [
+            10
+          ],
+          "c": [
+            null,
+            {
+              "keys": [
+                20
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "args": {
+        "key": 30
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    },
+    {
+      "i": 4,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=3)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "R"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "args": {
+        "key": 15
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=4)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    15
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    },
+    {
+      "i": 5,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=4)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    15
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "args": {
+        "key": 25
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=5)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    15
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    25
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                },
+                null
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    },
+    {
+      "i": 6,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=5)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                null,
+                {
+                  "keys": [
+                    15
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    25
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                },
+                null
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "args": {
+        "key": 5
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=6)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                },
+                {
+                  "keys": [
+                    15
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    25
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                },
+                null
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    },
+    {
+      "i": 7,
+      "op": "remove",
+      "before": {
+        "kind": "tree",
+        "label": "RBTree(size=6)",
+        "root": {
+          "keys": [
+            20
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                },
+                {
+                  "keys": [
+                    15
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    25
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                },
+                null
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "args": {
+        "key": 20
+      },
+      "after": {
+        "kind": "tree",
+        "label": "RBTree(size=5)",
+        "root": {
+          "keys": [
+            25
+          ],
+          "c": [
+            {
+              "keys": [
+                10
+              ],
+              "c": [
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                },
+                {
+                  "keys": [
+                    15
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "R"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1015 @@
+{
+  "meta": {
+    "kind": "array",
+    "title": "树状数组：add 与 prefixSum 的 lowbit 跳跃"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "add-hop",
+      "args": {
+        "at": 3,
+        "value": 5
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          }
+        ]
+      },
+      "hl": {
+        "active": 3
+      }
+    },
+    {
+      "i": 1,
+      "op": "add-hop",
+      "args": {
+        "at": 4,
+        "value": 5
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          }
+        ]
+      },
+      "hl": {
+        "active": 4
+      }
+    },
+    {
+      "i": 2,
+      "op": "add-hop",
+      "args": {
+        "at": 8,
+        "value": 5
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5,
+            "s": "active"
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5,
+            "s": "active"
+          }
+        ]
+      },
+      "hl": {
+        "active": 8
+      }
+    },
+    {
+      "i": 0,
+      "op": "add",
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          }
+        ]
+      },
+      "args": {
+        "index": 3,
+        "delta": 5
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5,
+            "s": "active"
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          }
+        ]
+      }
+    },
+    {
+      "i": 4,
+      "op": "add-hop",
+      "args": {
+        "at": 5,
+        "value": 2
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          }
+        ]
+      },
+      "hl": {
+        "active": 5
+      }
+    },
+    {
+      "i": 5,
+      "op": "add-hop",
+      "args": {
+        "at": 6,
+        "value": 2
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          }
+        ]
+      },
+      "hl": {
+        "active": 6
+      }
+    },
+    {
+      "i": 6,
+      "op": "add-hop",
+      "args": {
+        "at": 8,
+        "value": 7
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 7,
+            "s": "active"
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 7,
+            "s": "active"
+          }
+        ]
+      },
+      "hl": {
+        "active": 8
+      }
+    },
+    {
+      "i": 4,
+      "op": "add",
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          }
+        ]
+      },
+      "args": {
+        "index": 5,
+        "delta": 2
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2,
+            "s": "active"
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 7
+          }
+        ]
+      }
+    },
+    {
+      "i": 8,
+      "op": "add-hop",
+      "args": {
+        "at": 8,
+        "value": 8
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8,
+            "s": "active"
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8,
+            "s": "active"
+          }
+        ]
+      },
+      "hl": {
+        "active": 8
+      }
+    },
+    {
+      "i": 8,
+      "op": "add",
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 7
+          }
+        ]
+      },
+      "args": {
+        "index": 8,
+        "delta": 1
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8,
+            "s": "active"
+          }
+        ]
+      }
+    },
+    {
+      "i": 10,
+      "op": "sum-hop",
+      "args": {
+        "at": 7,
+        "grabbed": 0,
+        "total": 0
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0,
+            "s": "active"
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0,
+            "s": "active"
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "hl": {
+        "active": 7
+      }
+    },
+    {
+      "i": 11,
+      "op": "sum-hop",
+      "args": {
+        "at": 6,
+        "grabbed": 2,
+        "total": 2
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2,
+            "s": "active"
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "hl": {
+        "active": 6
+      }
+    },
+    {
+      "i": 12,
+      "op": "sum-hop",
+      "args": {
+        "at": 4,
+        "grabbed": 5,
+        "total": 7
+      },
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5,
+            "s": "active"
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5,
+            "s": "active"
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "hl": {
+        "active": 4
+      }
+    },
+    {
+      "i": 10,
+      "op": "prefixSum",
+      "before": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8
+          }
+        ]
+      },
+      "args": {
+        "index": 7
+      },
+      "after": {
+        "kind": "array",
+        "label": "Fenwick(n=8, 1-based)",
+        "cells": [
+          {
+            "v": 0
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 0
+          },
+          {
+            "v": 8
+          }
+        ]
+      }
+    }
+  ]
+}

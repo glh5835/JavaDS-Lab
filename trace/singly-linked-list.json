@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "kind": "linked",
+    "title": "单链表"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "addLast",
+      "before": {
+        "kind": "linked",
+        "nodes": []
+      },
+      "args": {
+        "value": 1
+      },
+      "hl": {
+        "index": 0
+      },
+      "after": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 1
+          }
+        ]
+      }
+    },
+    {
+      "i": 1,
+      "op": "addLast",
+      "before": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 1
+          }
+        ]
+      },
+      "args": {
+        "value": 2
+      },
+      "hl": {
+        "index": 1
+      },
+      "after": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          }
+        ]
+      }
+    },
+    {
+      "i": 2,
+      "op": "addFirst",
+      "before": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          }
+        ]
+      },
+      "args": {
+        "value": 0
+      },
+      "hl": {
+        "index": 0
+      },
+      "after": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 0
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          }
+        ]
+      }
+    },
+    {
+      "i": 3,
+      "op": "addLast",
+      "before": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 0
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          }
+        ]
+      },
+      "args": {
+        "value": 3
+      },
+      "hl": {
+        "index": 3
+      },
+      "after": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 0
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 3
+          }
+        ]
+      }
+    },
+    {
+      "i": 4,
+      "op": "removeAt",
+      "before": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 0
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 2
+          },
+          {
+            "v": 3
+          }
+        ]
+      },
+      "args": {
+        "index": 2
+      },
+      "hl": {
+        "index": 2
+      },
+      "after": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 0
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 3
+          }
+        ]
+      }
+    },
+    {
+      "i": 5,
+      "op": "insert",
+      "before": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 0
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 3
+          }
+        ]
+      },
+      "args": {
+        "index": 2,
+        "value": 99
+      },
+      "hl": {
+        "index": 2
+      },
+      "after": {
+        "kind": "linked",
+        "nodes": [
+          {
+            "v": 0
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 99
+          },
+          {
+            "v": 3
+          }
+        ]
+      }
+    }
+  ]
+}

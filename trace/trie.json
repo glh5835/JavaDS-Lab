@@ -1,0 +1,555 @@
+{
+  "meta": {
+    "kind": "tree",
+    "title": "Trie 前缀树"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "Trie(单词数=0)",
+        "root": {
+          "keys": [
+            "0"
+          ],
+          "c": []
+        }
+      },
+      "args": {
+        "word": "cat"
+      },
+      "hl": {
+        "word": "cat"
+      },
+      "after": {
+        "kind": "tree",
+        "label": "Trie(单词数=1)",
+        "root": {
+          "keys": [
+            "1"
+          ],
+          "c": [
+            {
+              "keys": [
+                "1"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "1"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 1,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "Trie(单词数=1)",
+        "root": {
+          "keys": [
+            "1"
+          ],
+          "c": [
+            {
+              "keys": [
+                "1"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "1"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            }
+          ]
+        }
+      },
+      "args": {
+        "word": "car"
+      },
+      "hl": {
+        "word": "car"
+      },
+      "after": {
+        "kind": "tree",
+        "label": "Trie(单词数=2)",
+        "root": {
+          "keys": [
+            "2"
+          ],
+          "c": [
+            {
+              "keys": [
+                "2"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "2"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "r"
+                    },
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 2,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "Trie(单词数=2)",
+        "root": {
+          "keys": [
+            "2"
+          ],
+          "c": [
+            {
+              "keys": [
+                "2"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "2"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "r"
+                    },
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            }
+          ]
+        }
+      },
+      "args": {
+        "word": "card"
+      },
+      "hl": {
+        "word": "card"
+      },
+      "after": {
+        "kind": "tree",
+        "label": "Trie(单词数=3)",
+        "root": {
+          "keys": [
+            "3"
+          ],
+          "c": [
+            {
+              "keys": [
+                "3"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "3"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "2"
+                      ],
+                      "c": [
+                        {
+                          "keys": [
+                            "1"
+                          ],
+                          "c": [],
+                          "color": "end",
+                          "ch": "d"
+                        }
+                      ],
+                      "color": "end",
+                      "ch": "r"
+                    },
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 3,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "Trie(单词数=3)",
+        "root": {
+          "keys": [
+            "3"
+          ],
+          "c": [
+            {
+              "keys": [
+                "3"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "3"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "2"
+                      ],
+                      "c": [
+                        {
+                          "keys": [
+                            "1"
+                          ],
+                          "c": [],
+                          "color": "end",
+                          "ch": "d"
+                        }
+                      ],
+                      "color": "end",
+                      "ch": "r"
+                    },
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            }
+          ]
+        }
+      },
+      "args": {
+        "word": "dog"
+      },
+      "hl": {
+        "word": "dog"
+      },
+      "after": {
+        "kind": "tree",
+        "label": "Trie(单词数=4)",
+        "root": {
+          "keys": [
+            "4"
+          ],
+          "c": [
+            {
+              "keys": [
+                "3"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "3"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "2"
+                      ],
+                      "c": [
+                        {
+                          "keys": [
+                            "1"
+                          ],
+                          "c": [],
+                          "color": "end",
+                          "ch": "d"
+                        }
+                      ],
+                      "color": "end",
+                      "ch": "r"
+                    },
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            },
+            {
+              "keys": [
+                "1"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "1"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "g"
+                    }
+                  ],
+                  "ch": "o"
+                }
+              ],
+              "ch": "d"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 4,
+      "op": "delete",
+      "before": {
+        "kind": "tree",
+        "label": "Trie(单词数=4)",
+        "root": {
+          "keys": [
+            "4"
+          ],
+          "c": [
+            {
+              "keys": [
+                "3"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "3"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "2"
+                      ],
+                      "c": [
+                        {
+                          "keys": [
+                            "1"
+                          ],
+                          "c": [],
+                          "color": "end",
+                          "ch": "d"
+                        }
+                      ],
+                      "color": "end",
+                      "ch": "r"
+                    },
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            },
+            {
+              "keys": [
+                "1"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "1"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "g"
+                    }
+                  ],
+                  "ch": "o"
+                }
+              ],
+              "ch": "d"
+            }
+          ]
+        }
+      },
+      "args": {
+        "word": "car"
+      },
+      "hl": {
+        "word": "car"
+      },
+      "after": {
+        "kind": "tree",
+        "label": "Trie(单词数=3)",
+        "root": {
+          "keys": [
+            "3"
+          ],
+          "c": [
+            {
+              "keys": [
+                "2"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "2"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [
+                        {
+                          "keys": [
+                            "1"
+                          ],
+                          "c": [],
+                          "color": "end",
+                          "ch": "d"
+                        }
+                      ],
+                      "ch": "r"
+                    },
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "t"
+                    }
+                  ],
+                  "ch": "a"
+                }
+              ],
+              "ch": "c"
+            },
+            {
+              "keys": [
+                "1"
+              ],
+              "c": [
+                {
+                  "keys": [
+                    "1"
+                  ],
+                  "c": [
+                    {
+                      "keys": [
+                        "1"
+                      ],
+                      "c": [],
+                      "color": "end",
+                      "ch": "g"
+                    }
+                  ],
+                  "ch": "o"
+                }
+              ],
+              "ch": "d"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

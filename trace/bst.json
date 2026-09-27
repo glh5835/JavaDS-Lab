@@ -1,0 +1,640 @@
+{
+  "meta": {
+    "kind": "tree",
+    "title": "二叉搜索树"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=0)",
+        "root": null
+      },
+      "args": {
+        "key": 50
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=1)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "i": 1,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=1)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            null,
+            null
+          ]
+        }
+      },
+      "args": {
+        "key": 30
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=2)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            null
+          ]
+        }
+      }
+    },
+    {
+      "i": 2,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=2)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            null
+          ]
+        }
+      },
+      "args": {
+        "key": 70
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=3)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 3,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=3)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                null,
+                null
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 20
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=4)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                null
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 4,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=4)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                null
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 40
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=5)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 5,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=5)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 60
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=6)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                {
+                  "keys": [
+                    60
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                null
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 6,
+      "op": "insert",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=6)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                {
+                  "keys": [
+                    60
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 80
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=7)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                {
+                  "keys": [
+                    60
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    80
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 7,
+      "op": "remove",
+      "before": {
+        "kind": "tree",
+        "label": "BST(size=7)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                30
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    40
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                {
+                  "keys": [
+                    60
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    80
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "args": {
+        "key": 30
+      },
+      "after": {
+        "kind": "tree",
+        "label": "BST(size=6)",
+        "root": {
+          "keys": [
+            50
+          ],
+          "c": [
+            {
+              "keys": [
+                40
+              ],
+              "c": [
+                {
+                  "keys": [
+                    20
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                null
+              ]
+            },
+            {
+              "keys": [
+                70
+              ],
+              "c": [
+                {
+                  "keys": [
+                    60
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    80
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

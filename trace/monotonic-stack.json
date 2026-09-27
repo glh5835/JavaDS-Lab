@@ -1,0 +1,1446 @@
+{
+  "meta": {
+    "kind": "monostack",
+    "title": "单调栈：下一个更大元素",
+    "input": "[I@45ff54e6"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "visit",
+      "args": {
+        "i": 0,
+        "value": 2
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": []
+      },
+      "hl": {
+        "active": 0
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "0:2",
+            "s": "inStack"
+          }
+        ]
+      }
+    },
+    {
+      "i": 1,
+      "op": "visit",
+      "args": {
+        "i": 1,
+        "value": 1
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "0:2",
+            "s": "inStack"
+          }
+        ]
+      },
+      "hl": {
+        "active": 1
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "0:2",
+            "s": "inStack"
+          },
+          {
+            "v": "1:1",
+            "s": "inStack"
+          }
+        ]
+      }
+    },
+    {
+      "i": 2,
+      "op": "pop-settle",
+      "args": {
+        "popped": 1,
+        "settledTo": 2
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "0:2",
+            "s": "inStack"
+          }
+        ]
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "0:2",
+            "s": "inStack"
+          }
+        ]
+      },
+      "hl": {
+        "active": 2,
+        "settled": 1
+      }
+    },
+    {
+      "i": 3,
+      "op": "pop-settle",
+      "args": {
+        "popped": 0,
+        "settledTo": 2
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": []
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": []
+      },
+      "hl": {
+        "active": 2,
+        "settled": 0
+      }
+    },
+    {
+      "i": 2,
+      "op": "visit",
+      "args": {
+        "i": 2,
+        "value": 5
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "0:2",
+            "s": "inStack"
+          },
+          {
+            "v": "1:1",
+            "s": "inStack"
+          }
+        ]
+      },
+      "hl": {
+        "active": 2
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "2:5",
+            "s": "inStack"
+          }
+        ]
+      }
+    },
+    {
+      "i": 5,
+      "op": "pop-settle",
+      "args": {
+        "popped": 2,
+        "settledTo": 3
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": []
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": []
+      },
+      "hl": {
+        "active": 3,
+        "settled": 2
+      }
+    },
+    {
+      "i": 5,
+      "op": "visit",
+      "args": {
+        "i": 3,
+        "value": 6
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "2:5",
+            "s": "inStack"
+          }
+        ]
+      },
+      "hl": {
+        "active": 3
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "3:6",
+            "s": "inStack"
+          }
+        ]
+      }
+    },
+    {
+      "i": 7,
+      "op": "visit",
+      "args": {
+        "i": 4,
+        "value": 2
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "3:6",
+            "s": "inStack"
+          }
+        ]
+      },
+      "hl": {
+        "active": 4
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "3:6",
+            "s": "inStack"
+          },
+          {
+            "v": "4:2",
+            "s": "inStack"
+          }
+        ]
+      }
+    },
+    {
+      "i": 8,
+      "op": "pop-settle",
+      "args": {
+        "popped": 4,
+        "settledTo": 5
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "3:6",
+            "s": "inStack"
+          }
+        ]
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "3:6",
+            "s": "inStack"
+          }
+        ]
+      },
+      "hl": {
+        "active": 5,
+        "settled": 4
+      }
+    },
+    {
+      "i": 8,
+      "op": "visit",
+      "args": {
+        "i": 5,
+        "value": 3
+      },
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "3:6",
+            "s": "inStack"
+          },
+          {
+            "v": "4:2",
+            "s": "inStack"
+          }
+        ]
+      },
+      "hl": {
+        "active": 5
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": "?",
+              "s": "unknown"
+            }
+          ]
+        },
+        "stack": [
+          {
+            "v": "3:6",
+            "s": "inStack"
+          },
+          {
+            "v": "5:3",
+            "s": "inStack"
+          }
+        ]
+      }
+    },
+    {
+      "i": 10,
+      "op": "finish",
+      "before": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": -1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": -1
+            }
+          ]
+        },
+        "stack": []
+      },
+      "after": {
+        "kind": "monostack",
+        "array": {
+          "kind": "array",
+          "label": "数组",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": 6
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            }
+          ]
+        },
+        "res": {
+          "kind": "array",
+          "label": "res（下一个更大元素下标）",
+          "cells": [
+            {
+              "v": 2
+            },
+            {
+              "v": 2
+            },
+            {
+              "v": 3
+            },
+            {
+              "v": -1
+            },
+            {
+              "v": 5
+            },
+            {
+              "v": -1
+            }
+          ]
+        },
+        "stack": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "meta": {
+    "kind": "array",
+    "title": "动态数组 MyArrayList"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "add",
+      "before": {
+        "kind": "array",
+        "label": "ArrayList(size=0, cap=8)",
+        "cells": []
+      },
+      "args": {
+        "value": 10
+      },
+      "hl": {
+        "index": 0
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayList(size=1, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          }
+        ]
+      }
+    },
+    {
+      "i": 1,
+      "op": "add",
+      "before": {
+        "kind": "array",
+        "label": "ArrayList(size=1, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          }
+        ]
+      },
+      "args": {
+        "value": 20
+      },
+      "hl": {
+        "index": 1
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayList(size=2, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 20
+          }
+        ]
+      }
+    },
+    {
+      "i": 2,
+      "op": "add",
+      "before": {
+        "kind": "array",
+        "label": "ArrayList(size=2, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 20
+          }
+        ]
+      },
+      "args": {
+        "value": 30
+      },
+      "hl": {
+        "index": 2
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayList(size=3, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          }
+        ]
+      }
+    },
+    {
+      "i": 3,
+      "op": "add",
+      "before": {
+        "kind": "array",
+        "label": "ArrayList(size=3, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          }
+        ]
+      },
+      "args": {
+        "value": 40
+      },
+      "hl": {
+        "index": 3
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayList(size=4, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 40
+          }
+        ]
+      }
+    },
+    {
+      "i": 4,
+      "op": "insert",
+      "before": {
+        "kind": "array",
+        "label": "ArrayList(size=4, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 40
+          }
+        ]
+      },
+      "args": {
+        "index": 1,
+        "value": 15
+      },
+      "hl": {
+        "index": 1
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayList(size=5, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 15
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 40
+          }
+        ]
+      }
+    },
+    {
+      "i": 5,
+      "op": "set",
+      "before": {
+        "kind": "array",
+        "label": "ArrayList(size=5, cap=8)",
+        "cells": [
+          {
+            "v": 10
+          },
+          {
+            "v": 15
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 40
+          }
+        ]
+      },
+      "args": {
+        "index": 0,
+        "value": 5
+      },
+      "hl": {
+        "index": 0
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayList(size=5, cap=8)",
+        "cells": [
+          {
+            "v": 5
+          },
+          {
+            "v": 15
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 40
+          }
+        ]
+      }
+    },
+    {
+      "i": 6,
+      "op": "remove",
+      "before": {
+        "kind": "array",
+        "label": "ArrayList(size=5, cap=8)",
+        "cells": [
+          {
+            "v": 5
+          },
+          {
+            "v": 15
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 30
+          },
+          {
+            "v": 40
+          }
+        ]
+      },
+      "args": {
+        "index": 3
+      },
+      "hl": {
+        "index": 3
+      },
+      "after": {
+        "kind": "array",
+        "label": "ArrayList(size=4, cap=8)",
+        "cells": [
+          {
+            "v": 5
+          },
+          {
+            "v": 15
+          },
+          {
+            "v": 20
+          },
+          {
+            "v": 40
+          }
+        ]
+      }
+    }
+  ]
+}
