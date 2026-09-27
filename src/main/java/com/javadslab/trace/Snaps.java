@@ -93,7 +93,7 @@ public final class Snaps {
         return m;
     }
 
-    public static Map<String, Object> tree(Map<String, Object> root, String label) {
+    public static Map<String, Object> tree(Object root, String label) {
         return obj("kind", "tree", "label", label, "root", root);
     }
 
