@@ -76,18 +76,26 @@ public final class TraceGenerator {
         register(all, "dfs", new DfsDemo().run());
         register(all, "dijkstra", new DijkstraDemo().run());
         register(all, "floyd", new FloydDemo().run());
+        register(all, "bellman-ford", new BellmanFordDemo().run());
         register(all, "prim", new PrimDemo().run());
         register(all, "kruskal", new KruskalDemo().run());
         register(all, "topological-sort", new TopoDemo().run());
         register(all, "sort-bubble", TraceableSorts.bubbleSort(new int[]{5, 2, 9, 1, 7, 3}));
         register(all, "sort-insertion", TraceableSorts.insertionSort(new int[]{6, 3, 8, 1, 5}));
         register(all, "sort-selection", TraceableSorts.selectionSort(new int[]{7, 2, 5, 3, 8}));
+        register(all, "sort-shell", TraceableSorts.shellSort(new int[]{9, 4, 7, 1, 8, 2, 6}));
+        register(all, "sort-merge", TraceableSorts.mergeSort(new int[]{5, 2, 8, 1, 6}));
         register(all, "sort-quick", TraceableSorts.quickSort(new int[]{8, 3, 5, 2, 9, 1, 6}));
         register(all, "sort-heap", TraceableSorts.heapSort(new int[]{4, 10, 3, 5, 1}));
+        register(all, "sort-counting", TraceableSorts.countingSort(new int[]{4, 1, 3, 4, 0, 2}));
+        register(all, "sort-radix", TraceableSorts.radixSort(new int[]{170, 45, 75, 90, 802, 24}));
+        register(all, "sort-bucket", TraceableSorts.bucketSort(new int[]{29, 25, 3, 49, 9, 37, 21, 43}));
         register(all, "binary-search", TraceableSearch.binarySearch(new int[]{1, 3, 5, 7, 9, 11, 13, 15}, 7));
         register(all, "kmp", TraceableSearch.kmp("ababcababd", "ababd"));
         register(all, "dp-lcs", TraceableDP.lcs("ABCBDAB", "BDCABA"));
         register(all, "dp-knapsack", TraceableDP.knapsack01(new int[]{2, 3, 4, 5}, new int[]{3, 4, 5, 6}, 8));
+        register(all, "dp-climb-stairs", TraceableDP.climbStairs(8));
+        register(all, "dp-coin-change", TraceableDP.coinChange(new int[]{1, 5, 6}, 11));
 
         // 逐个写 trace/<name>.json
         for (Map.Entry<String, Object> e : all.entrySet()) {
@@ -377,6 +385,22 @@ public final class TraceGenerator {
             ShortestPath dij = new ShortestPath();
             dij.attachTracer(t);
             dij.dijkstra(demoGraph(), 0);
+            return t;
+        }
+    }
+
+    static class BellmanFordDemo {
+        Tracer run() {
+            Tracer t = new Tracer("graph", "Bellman-Ford（含负权边，逐轮松弛）");
+            List<Graph.Edge> edges = List.of(
+                    new Graph.Edge(0, 1, 4),
+                    new Graph.Edge(0, 2, 5),
+                    new Graph.Edge(1, 3, -3),
+                    new Graph.Edge(2, 3, 4),
+                    new Graph.Edge(3, 4, 2));
+            ShortestPath bf = new ShortestPath();
+            bf.attachTracer(t);
+            bf.bellmanFord(5, edges, 0);
             return t;
         }
     }

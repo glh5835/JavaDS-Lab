@@ -76,4 +76,66 @@ public final class TraceableDP {
         }
         return Snaps.obj("kind", "matrix", "label", "LCS DP 表", "rows", rows);
     }
+
+    /** 爬楼梯：一维 dp 数组逐格填充。 */
+    public static Tracer climbStairs(int n) {
+        Tracer t = new Tracer("array", "爬楼梯 dp（n=" + n + "）");
+        t.meta("algorithm", "climb-stairs");
+        long[] dp = new long[Math.max(n + 1, 2)];
+        dp[0] = 1;
+        dp[1] = 1;
+        int[] show = new int[Math.max(n + 1, 2)];
+        show[0] = 1;
+        show[1] = 1;
+        t.step("init").arg("dp0", 1).arg("dp1", 1)
+                .before(Snaps.arrayPlain("dp 数组", show))
+                .after(Snaps.arrayPlain("dp 数组", show)).commit();
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+            show[i] = (int) dp[i];
+            Map<Integer, String> marks = new java.util.LinkedHashMap<>();
+            marks.put(i, "active");
+            marks.put(i - 1, "cmp");
+            marks.put(i - 2, "cmp");
+            t.step("fill").arg("i", i).arg("value", dp[i]).arg("from", "dp[i-1]+dp[i-2]")
+                    .before(Snaps.arrayMarked("dp 数组", show, marks))
+                    .after(Snaps.arrayMarked("dp 数组", show, marks))
+                    .hl("cell", i).commit();
+        }
+        t.step("done").arg("ways", dp[n])
+                .before(Snaps.arrayPlain("dp 数组", show))
+                .after(Snaps.arrayPlain("dp 数组", show)).commit();
+        return t;
+    }
+
+    /** 零钱兑换（最少硬币）：一维 dp 逐格填充。 */
+    public static Tracer coinChange(int[] coins, int amount) {
+        Tracer t = new Tracer("array", "零钱兑换 coins=" + java.util.Arrays.toString(coins) + " amount=" + amount);
+        t.meta("algorithm", "coin-change");
+        int INF = Integer.MAX_VALUE - 1;
+        int[] dp = new int[amount + 1];
+        java.util.Arrays.fill(dp, INF);
+        dp[0] = 0;
+        for (int c : coins) {
+            for (int x = c; x <= amount; x++) {
+                if (dp[x - c] + 1 < dp[x]) {
+                    dp[x] = dp[x - c] + 1;
+                    Map<Integer, String> marks = new java.util.LinkedHashMap<>();
+                    marks.put(x, "active");
+                    marks.put(x - c, "cmp");
+                    t.step("relax").arg("coin", c).arg("amount", x).arg("newDp", dp[x])
+                            .before(Snaps.arrayMarked("dp 数组", dp, marks))
+                            .after(Snaps.arrayMarked("dp 数组", dp, marks))
+                            .hl("cell", x).commit();
+                }
+            }
+            t.step("coin-done").arg("coin", c)
+                    .before(Snaps.arrayPlain("dp 数组", dp))
+                    .after(Snaps.arrayPlain("dp 数组", dp)).commit();
+        }
+        t.step("done").arg("minCoins", dp[amount])
+                .before(Snaps.arrayPlain("dp 数组", dp))
+                .after(Snaps.arrayPlain("dp 数组", dp)).commit();
+        return t;
+    }
 }
