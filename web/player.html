@@ -26,6 +26,14 @@
   .legend { display: flex; gap: 10px; flex-wrap: wrap; padding: 0 16px 10px; font-size: 12px; color: var(--muted); }
   .legend span::before { content: "■ "; }
   .err { color: var(--red); }
+  .thumbs { display: flex; gap: 6px; padding: 4px 16px 8px; overflow-x: auto; }
+  .thumb { flex: 0 0 auto; width: 112px; height: 64px; border: 2px solid #334155; border-radius: 6px;
+           overflow: hidden; cursor: pointer; position: relative; background: var(--panel); }
+  .thumb:hover { border-color: var(--accent); }
+  .thumb.active { border-color: var(--orange); box-shadow: 0 0 6px rgba(251, 146, 60, .5); }
+  .thumb svg { width: 100%; height: 100%; display: block; pointer-events: none; }
+  .thumb span { position: absolute; left: 4px; bottom: 1px; font-size: 10px; color: var(--muted);
+                background: rgba(15, 23, 42, .75); border-radius: 3px; padding: 0 3px; }
 </style>
 </head>
 <body>
@@ -38,6 +46,8 @@
 </header>
 
 <main><div id="stage"></div></main>
+
+<div class="thumbs" id="thumbs"></div>
 
 <div class="legend">
   <span style="color:var(--yellow)">比较</span><span style="color:var(--orange)">交换/写入</span>
@@ -124,6 +134,11 @@ function render(snapshot, hl) {
   stage.innerHTML = "";
   const svg = el("svg", { viewBox: "0 0 900 480", preserveAspectRatio: "xMidYMid meet" });
   stage.appendChild(svg);
+  renderInto(svg, snapshot, hl);
+}
+
+/* 把快照画进任意 SVG（主画面与缩略图共用同一渲染器） */
+function renderInto(svg, snapshot, hl) {
   if (!snapshot) { svg.appendChild(el("text", { x: 450, y: 240, fill: "#94a3b8", "text-anchor": "middle" }, "无快照")); return; }
   switch (snapshot.kind) {
     case "array": renderArray(svg, snapshot, hl); break;
@@ -365,12 +380,52 @@ function renderKMP(svg, snap) {
     `i = ${snap.i}   j = ${snap.j}`));
 }
 
+/* ================= 缩略图导航 ================= */
+/* 均匀采样 min(10, N) 帧（含首尾），每帧用主渲染器画进小 SVG；点击跳步、高亮跟随 */
+function buildThumbs() {
+  const bar = document.getElementById("thumbs");
+  bar.innerHTML = "";
+  data.thumbs = [];
+  if (!data.trace) return;
+  const N = data.trace.steps.length;
+  const K = Math.min(10, N);
+  for (let k = 0; k < K; k++) {
+    const stepIdx = Math.round(k * (N - 1) / Math.max(K - 1, 1));
+    const snap = stepIdx <= 0 ? data.trace.steps[0].before : data.trace.steps[stepIdx].after;
+    const d = document.createElement("div");
+    d.className = "thumb";
+    d.title = "第 " + (stepIdx + 1) + " 步" + (data.trace.steps[stepIdx] ? "：" + data.trace.steps[stepIdx].op : "");
+    const s = el("svg", { viewBox: "0 0 900 480", preserveAspectRatio: "xMidYMid meet" });
+    renderInto(s, snap, null);
+    d.appendChild(s);
+    const lbl = document.createElement("span");
+    lbl.textContent = "#" + (stepIdx + 1);
+    d.appendChild(lbl);
+    d.addEventListener("click", () => { stop(); goto(stepIdx); });
+    bar.appendChild(d);
+    data.thumbs.push({ stepIdx, el: d });
+  }
+  updateThumbs();
+}
+
+function updateThumbs() {
+  if (!data.thumbs) return;
+  const cur = data.idx;
+  let best = null;
+  for (const t of data.thumbs) {
+    t.el.classList.remove("active");
+    if (cur >= 0 && (best === null || Math.abs(t.stepIdx - cur) < Math.abs(best.stepIdx - cur))) best = t;
+  }
+  if (best) best.el.classList.add("active");
+}
+
 /* ================= 播放控制 ================= */
 function setTrace(traceObj, name) {
   if (!traceObj || !traceObj.steps) { setStatus("无效的 trace 文件", true); return; }
   data.trace = traceObj; data.name = name; data.idx = -1;
   const slider = document.getElementById("slider");
   slider.max = traceObj.steps.length - 1; slider.value = 0;
+  buildThumbs();
   goto(-1);
   setStatus(`已加载 “${name}”：${traceObj.steps.length} 步，类型 ${traceObj.meta && traceObj.meta.kind}`);
 }
@@ -398,6 +453,7 @@ function goto(i) {
     const args = step.args ? Object.entries(step.args).map(([k, v]) => `${k}=${JSON.stringify(v)}`).join("  ") : "";
     info.innerHTML = `<span class="op-tag">${step.op}</span><b>${args}</b>${step.note ? "　— " + step.note : ""}`;
   }
+  updateThumbs();
 }
 
 function stop() {
@@ -439,7 +495,17 @@ window.__player = {
   traceNames: () => TRACE_INDEX.map(t => t.name),
   load: name => { loadTrace(name); },
   goto: i => goto(i),
-  current: () => ({ name: data.name, idx: data.idx, total: data.trace ? data.trace.steps.length : 0, svgChildren: document.querySelector("#stage svg") ? document.querySelector("#stage svg").childElementCount : 0 }),
+  current: () => ({
+    name: data.name, idx: data.idx, total: data.trace ? data.trace.steps.length : 0,
+    svgChildren: document.querySelector("#stage svg") ? document.querySelector("#stage svg").childElementCount : 0,
+    thumbCount: data.thumbs ? data.thumbs.length : 0,
+    thumbSvgs: document.querySelectorAll("#thumbs .thumb svg").length,
+    activeThumbStep: (() => {
+      const a = document.querySelector("#thumbs .thumb.active span");
+      return a ? a.textContent : null;
+    })()
+  }),
+  clickThumb: i => { const t = document.querySelectorAll("#thumbs .thumb")[i]; if (t) t.click(); },
   lastError: null
 };
 window.addEventListener("error", e => { window.__player.lastError = String(e.message); });

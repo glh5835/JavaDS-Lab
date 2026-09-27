@@ -1,4 +1,6 @@
 @echo off
-rem JavaDS-Lab 可视化播放器启动器：双击即用浏览器打开（trace 已内嵌，无需服务器）
+rem JavaDS-Lab player launcher: opens web\player.html in the default browser
+rem (all 44 traces are embedded in web\traces-bundle.js, no server needed)
 start "" "%~dp0web\player.html"
-echo 已在默认浏览器打开播放器。若页面空白，请改用 docs\使用说明.md 里的 http.server 方式。
+echo Player opened in your default browser.
+echo If the page is blank, see docs\使用说明.md for the http.server method.

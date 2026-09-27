@@ -29,6 +29,9 @@ public final class Dao {
 
     public record Mistake(long id, long algorithmId, String question, String wrongAnswer, String reason, int redoCount, String createdAt) {}
 
+    /** 错题列表行（JOIN 算法名，供 CLI 全量展示）。 */
+    public record MistakeRow(long id, String algorithm, String question, String wrongAnswer, String reason, int redoCount) {}
+
     /** 错题重做成功：错误原因归档后重新计数前先清空错误记录时使用。 */
     public record Weakness(String algorithmName, String category, long mistakeCount, int totalRedo, double avgRedo) {}
 
@@ -225,6 +228,25 @@ public final class Dao {
                     while (rs.next()) out.add(readMistake(rs));
                     return out;
                 }
+            }
+        });
+    }
+
+    /** 全量错题（JOIN 算法名，按 id 升序）。 */
+    public List<MistakeRow> listAllMistakes() {
+        return db.inTransaction(c -> {
+            try (Statement st = c.createStatement();
+                 ResultSet rs = st.executeQuery("""
+                         SELECT m.id, a.name, m.question, m.wrong_answer, m.reason, m.redo_count
+                         FROM mistakes m JOIN algorithms a ON a.id = m.algorithm_id
+                         ORDER BY m.id
+                         """)) {
+                List<MistakeRow> out = new ArrayList<>();
+                while (rs.next()) {
+                    out.add(new MistakeRow(rs.getLong(1), rs.getString(2), rs.getString(3),
+                            rs.getString(4), rs.getString(5), rs.getInt(6)));
+                }
+                return out;
             }
         });
     }
