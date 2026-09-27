@@ -26,8 +26,10 @@ import com.javadslab.core.tree.Trie;
 import com.javadslab.core.unionfind.UnionFind;
 import com.javadslab.trace.Json;
 import com.javadslab.trace.TraceableDP;
+import com.javadslab.trace.TraceableQuickSort3Way;
 import com.javadslab.trace.TraceableSearch;
 import com.javadslab.trace.TraceableSorts;
+import com.javadslab.trace.TraceableTrees;
 import com.javadslab.trace.Tracer;
 
 import java.io.IOException;
@@ -94,6 +96,8 @@ public final class TraceGenerator {
         register(all, "kmp", TraceableSearch.kmp("ababcababd", "ababd"));
         register(all, "dp-lcs", TraceableDP.lcs("ABCBDAB", "BDCABA"));
         register(all, "dp-knapsack", TraceableDP.knapsack01(new int[]{2, 3, 4, 5}, new int[]{3, 4, 5, 6}, 8));
+        register(all, "tree-traversal", TraceableTrees.fourTraversals(new Integer[]{1, 2, 3, 4, 5, 6, 7}));
+        register(all, "quick-sort-3way", TraceableQuickSort3Way.sort(new int[]{4, 2, 4, 1, 4, 3, 2, 4}));
         register(all, "dp-climb-stairs", TraceableDP.climbStairs(8));
         register(all, "dp-coin-change", TraceableDP.coinChange(new int[]{1, 5, 6}, 11));
 

@@ -3,7 +3,7 @@
     "kind": "array",
     "title": "快速排序（Lomuto 分区）",
     "algorithm": "quick",
-    "input": "[I@497470ed"
+    "input": "[I@4ee285c6"
   },
   "steps": [
     {

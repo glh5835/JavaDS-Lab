@@ -1,0 +1,4641 @@
+{
+  "meta": {
+    "kind": "tree",
+    "title": "二叉树四种遍历",
+    "algorithm": "tree-traversal"
+  },
+  "steps": [
+    {
+      "i": 0,
+      "op": "init",
+      "args": {
+        "order": "先序（根左右）"
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 1,
+      "op": "visit",
+      "args": {
+        "order": "先序",
+        "node": 1,
+        "visitSeq": 1
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "hl": {
+        "active": 1
+      }
+    },
+    {
+      "i": 2,
+      "op": "visit",
+      "args": {
+        "order": "先序",
+        "node": 2,
+        "visitSeq": 2
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 2
+      }
+    },
+    {
+      "i": 3,
+      "op": "visit",
+      "args": {
+        "order": "先序",
+        "node": 4,
+        "visitSeq": 3
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 4
+      }
+    },
+    {
+      "i": 4,
+      "op": "visit",
+      "args": {
+        "order": "先序",
+        "node": 5,
+        "visitSeq": 4
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 5
+      }
+    },
+    {
+      "i": 5,
+      "op": "visit",
+      "args": {
+        "order": "先序",
+        "node": 3,
+        "visitSeq": 5
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 3
+      }
+    },
+    {
+      "i": 6,
+      "op": "visit",
+      "args": {
+        "order": "先序",
+        "node": 6,
+        "visitSeq": 6
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 6
+      }
+    },
+    {
+      "i": 7,
+      "op": "visit",
+      "args": {
+        "order": "先序",
+        "node": 7,
+        "visitSeq": 7
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 7
+      }
+    },
+    {
+      "i": 8,
+      "op": "switch",
+      "args": {
+        "order": "中序（左根右）"
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 9,
+      "op": "visit",
+      "args": {
+        "order": "中序",
+        "node": 4,
+        "visitSeq": 1
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 4
+      }
+    },
+    {
+      "i": 10,
+      "op": "visit",
+      "args": {
+        "order": "中序",
+        "node": 2,
+        "visitSeq": 2
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 2
+      }
+    },
+    {
+      "i": 11,
+      "op": "visit",
+      "args": {
+        "order": "中序",
+        "node": 5,
+        "visitSeq": 3
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 5
+      }
+    },
+    {
+      "i": 12,
+      "op": "visit",
+      "args": {
+        "order": "中序",
+        "node": 1,
+        "visitSeq": 4
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "hl": {
+        "active": 1
+      }
+    },
+    {
+      "i": 13,
+      "op": "visit",
+      "args": {
+        "order": "中序",
+        "node": 6,
+        "visitSeq": 5
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 6
+      }
+    },
+    {
+      "i": 14,
+      "op": "visit",
+      "args": {
+        "order": "中序",
+        "node": 3,
+        "visitSeq": 6
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 3
+      }
+    },
+    {
+      "i": 15,
+      "op": "visit",
+      "args": {
+        "order": "中序",
+        "node": 7,
+        "visitSeq": 7
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 7
+      }
+    },
+    {
+      "i": 16,
+      "op": "switch",
+      "args": {
+        "order": "后序（左右根）"
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 17,
+      "op": "visit",
+      "args": {
+        "order": "后序",
+        "node": 4,
+        "visitSeq": 1
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 4
+      }
+    },
+    {
+      "i": 18,
+      "op": "visit",
+      "args": {
+        "order": "后序",
+        "node": 5,
+        "visitSeq": 2
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 5
+      }
+    },
+    {
+      "i": 19,
+      "op": "visit",
+      "args": {
+        "order": "后序",
+        "node": 2,
+        "visitSeq": 3
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 2
+      }
+    },
+    {
+      "i": 20,
+      "op": "visit",
+      "args": {
+        "order": "后序",
+        "node": 6,
+        "visitSeq": 4
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 6
+      }
+    },
+    {
+      "i": 21,
+      "op": "visit",
+      "args": {
+        "order": "后序",
+        "node": 7,
+        "visitSeq": 5
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 7
+      }
+    },
+    {
+      "i": 22,
+      "op": "visit",
+      "args": {
+        "order": "后序",
+        "node": 3,
+        "visitSeq": 6
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "hl": 1
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "hl": 1
+            }
+          ]
+        }
+      },
+      "hl": {
+        "active": 3
+      }
+    },
+    {
+      "i": 23,
+      "op": "visit",
+      "args": {
+        "order": "后序",
+        "node": 1,
+        "visitSeq": 7
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "hl": {
+        "active": 1
+      }
+    },
+    {
+      "i": 24,
+      "op": "switch",
+      "args": {
+        "order": "层序（BFS）"
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "i": 25,
+      "op": "visit",
+      "args": {
+        "order": "层序",
+        "node": 1,
+        "visitSeq": 1
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "hl": 1
+        }
+      },
+      "hl": {
+        "active": 1
+      }
+    },
+    {
+      "i": 26,
+      "op": "visit",
+      "args": {
+        "order": "层序",
+        "node": 2,
+        "visitSeq": 2
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 2
+      }
+    },
+    {
+      "i": 27,
+      "op": "visit",
+      "args": {
+        "order": "层序",
+        "node": 3,
+        "visitSeq": 3
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "hl": 1
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 3
+      }
+    },
+    {
+      "i": 28,
+      "op": "visit",
+      "args": {
+        "order": "层序",
+        "node": 4,
+        "visitSeq": 4
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 4
+      }
+    },
+    {
+      "i": 29,
+      "op": "visit",
+      "args": {
+        "order": "层序",
+        "node": 5,
+        "visitSeq": 5
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 5
+      }
+    },
+    {
+      "i": 30,
+      "op": "visit",
+      "args": {
+        "order": "层序",
+        "node": 6,
+        "visitSeq": 6
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ]
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 6
+      }
+    },
+    {
+      "i": 31,
+      "op": "visit",
+      "args": {
+        "order": "层序",
+        "node": 7,
+        "visitSeq": 7
+      },
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "hl": 1
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "hl": {
+        "active": 7
+      }
+    },
+    {
+      "i": 32,
+      "op": "done",
+      "before": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      },
+      "after": {
+        "kind": "tree",
+        "label": "二叉树遍历（深=已访问, 红=当前）",
+        "root": {
+          "keys": [
+            1
+          ],
+          "c": [
+            {
+              "keys": [
+                2
+              ],
+              "c": [
+                {
+                  "keys": [
+                    4
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    5
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            },
+            {
+              "keys": [
+                3
+              ],
+              "c": [
+                {
+                  "keys": [
+                    6
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                },
+                {
+                  "keys": [
+                    7
+                  ],
+                  "c": [
+                    null,
+                    null
+                  ],
+                  "color": "B"
+                }
+              ],
+              "color": "B"
+            }
+          ],
+          "color": "B"
+        }
+      }
+    }
+  ]
+}
