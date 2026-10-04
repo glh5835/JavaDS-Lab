@@ -67,3 +67,14 @@ BUILD SUCCESS
 - 播放器 renderMatrix 在空 rows 时会渲染空白（现网不会出现：Trace 生成器保证 rows 非空）；
 - 错题本"重做"的参考答案区只能展示当时记录的错误答案与提示（mistakes 表不存标准答案），界面已如实说明并引导去笔记对照；
 - 数据库性能对比首跑含缓存效应，页面已标注"仅供教学参考"。
+
+## 7. 启动脚本端到端实测（计划 §33/§50）
+
+`启动工作台.bat` 在真实 cmd 环境跑通：JDK 检查 → 端口检查 → 启动服务 → 健康检查 → 自动打开浏览器。
+实测中发现并修复 2 个问题（已回归验证）：
+
+1. **编码**：UTF-8 中文 BAT + `chcp 65001` 会令 cmd 行解析错位（"The syntax of the command is incorrect"，
+   且错误行号随裁剪位置漂移）——改为 **GBK/ANSI 编码**保存（中文显示与解析均正常）。
+2. **参数转义**：`"%ROOT%"`（含尾反斜杠）把闭引号转义成 `D:\JavaDS-Lab"`，Java 端
+   `InvalidPathException` 导致服务静默退出——改为独立变量 `ROOT_ARG`（仅传参去尾反斜杠）。
+3. 等待循环用 `ping -n` 代替 `timeout`，避免与 Git Bash 等 UNIX 工具环境的 timeout 同名冲突。

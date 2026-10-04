@@ -1,88 +1,176 @@
 @echo off
-chcp 65001 >nul
+
 rem ============================================================
-rem JavaDS-Lab å­¦ä¹ å·¥ä½œå° å”¯ä¸€å¯åŠ¨å…¥å£ï¼ˆè®¡åˆ’ Â§1.1 / Â§33ï¼‰
-rem åŒå‡»åŽï¼šå®šä½ç›®å½• -> æ£€æŸ¥ JDK -> æ£€æŸ¥æž„å»ºäº§ç‰© -> å¯åŠ¨æœåŠ¡ ->
-rem         å¥åº·æ£€æŸ¥ -> è‡ªåŠ¨æ‰“å¼€æµè§ˆå™¨ -> è¿›å…¥å­¦ä¹ ä¸­å¿ƒé¦–é¡µ
+
+rem JavaDS-Lab Ñ§Ï°¹¤×÷Ì¨ Î¨Ò»Æô¶¯Èë¿Ú£¨¼Æ»® ¡ì1.1 / ¡ì33£©
+
+rem Ë«»÷ºó£º¶¨Î»Ä¿Â¼ -> ¼ì²é JDK -> ¼ì²é¹¹½¨²úÎï -> Æô¶¯·þÎñ ->
+
+rem         ½¡¿µ¼ì²é -> ×Ô¶¯´ò¿ªä¯ÀÀÆ÷ -> ½øÈëÑ§Ï°ÖÐÐÄÊ×Ò³
+
 rem ============================================================
+
 setlocal EnableDelayedExpansion
 
-rem 1) ä»¥è„šæœ¬è‡ªèº«ä½ç½®å®šä½é¡¹ç›®ç›®å½•ï¼Œä¸ä¾èµ–å½“å‰å·¥ä½œç›®å½•
+
+
+rem 1) ÒÔ½Å±¾×ÔÉíÎ»ÖÃ¶¨Î»ÏîÄ¿Ä¿Â¼£¬²»ÒÀÀµµ±Ç°¹¤×÷Ä¿Â¼
+
 set "ROOT=%~dp0"
+
+set "ROOT_ARG=%ROOT:~0,-1%"
+
 cd /d "%ROOT%"
 
-rem 2) æ£€æŸ¥ JDK 17ï¼ˆä¼˜å…ˆç”¨é¡¹ç›®å†…ç½®ä¾¿æºç‰ˆï¼Œå…¶æ¬¡ç³»ç»Ÿ PATHï¼‰
+
+
+rem 2) ¼ì²é JDK 17£¨ÓÅÏÈÓÃÏîÄ¿ÄÚÖÃ±ãÐ¯°æ£¬Æä´ÎÏµÍ³ PATH£©
+
 set "JAVA_EXE="
+
 if exist "%ROOT%tools\jdk-17.0.20.1+1\bin\java.exe" (
+
   set "JAVA_EXE=%ROOT%tools\jdk-17.0.20.1+1\bin\java.exe"
+
   set "JAVA_HOME=%ROOT%tools\jdk-17.0.20.1+1"
+
 ) else (
+
   where java >nul 2>nul && set "JAVA_EXE=java"
+
 )
+
 if not defined JAVA_EXE (
-  echo [é”™è¯¯] æœªæ£€æµ‹åˆ° JDK 17ã€‚
-  echo è¯·å®‰è£… JDK 17ï¼Œæˆ–å°†ä¾¿æºç‰ˆæ”¾åˆ° tools\jdk-17.0.20.1+1\ ç›®å½•ã€‚
+
+  echo [´íÎó] Î´¼ì²âµ½ JDK 17¡£
+
+  echo Çë°²×° JDK 17£¬»ò½«±ãÐ¯°æ·Åµ½ tools\jdk-17.0.20.1+1\ Ä¿Â¼¡£
+
   pause
+
   exit /b 1
+
 )
 
-rem 3) æ£€æŸ¥æœåŠ¡ç«¯ç±»æ˜¯å¦å·²ç¼–è¯‘ï¼›ç¼ºå¤±åˆ™ç”¨ Maven ç¼–è¯‘
+
+
+rem 3) ¼ì²é·þÎñ¶ËÀàÊÇ·ñÒÑ±àÒë£»È±Ê§ÔòÓÃ Maven ±àÒë
+
 if not exist "%ROOT%target\classes\com\javadslab\workbench\WorkbenchServer.class" (
-  echo é¦–æ¬¡è¿è¡Œï¼šæ­£åœ¨ç¼–è¯‘é¡¹ç›®ï¼ˆMavenï¼Œåªéœ€ä¸€æ¬¡ï¼‰â€¦â€¦
+
+  echo Ê×´ÎÔËÐÐ£ºÕýÔÚ±àÒëÏîÄ¿£¨Maven£¬Ö»ÐèÒ»´Î£©¡­¡­
+
   set "MAVEN_CMD=mvn"
+
   if exist "%ROOT%tools\apache-maven-3.9.16\bin\mvn.cmd" set "MAVEN_CMD=%ROOT%tools\apache-maven-3.9.16\bin\mvn.cmd"
+
   call "%MAVEN_CMD%" -s "%ROOT%tools\maven-settings.xml" -q compile
+
   if errorlevel 1 (
-    echo [é”™è¯¯] ç¼–è¯‘å¤±è´¥ã€‚è¯·æ£€æŸ¥ç½‘ç»œï¼ˆMaven é¦–æ¬¡éœ€è¦ä¸‹è½½ä¾èµ–ï¼‰åŽé‡è¯•ã€‚
+
+    echo [´íÎó] ±àÒëÊ§°Ü¡£Çë¼ì²éÍøÂç£¨Maven Ê×´ÎÐèÒªÏÂÔØÒÀÀµ£©ºóÖØÊÔ¡£
+
     pause
+
     exit /b 1
+
   )
+
 )
 
-rem 4) ç»„è£… classpathï¼ˆSQLite JDBC + slf4jï¼‰
+
+
+rem 4) ×é×° classpath£¨SQLite JDBC + slf4j£©
+
 set "USER_M2=%USERPROFILE%\.m2\repository"
+
 set "CP=%ROOT%target\classes;%USER_M2%\org\xerial\sqlite-jdbc\3.46.1.0\sqlite-jdbc-3.46.1.0.jar;%USER_M2%\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar"
+
 if not exist "%USER_M2%\org\xerial\sqlite-jdbc\3.46.1.0\sqlite-jdbc-3.46.1.0.jar" (
-  echo [é”™è¯¯] ç¼ºå°‘ SQLite JDBC ä¾èµ–ï¼š%USER_M2%\org\xerial\sqlite-jdbc\3.46.1.0\sqlite-jdbc-3.46.1.0.jar
-  echo è¯·å…ˆåŒå‡» è¿è¡Œæµ‹è¯•.bat ä¸€æ¬¡ï¼Œè®© Maven ä¸‹è½½ä¾èµ–ã€‚
+
+  echo [´íÎó] È±ÉÙ SQLite JDBC ÒÀÀµ£º%USER_M2%\org\xerial\sqlite-jdbc\3.46.1.0\sqlite-jdbc-3.46.1.0.jar
+
+  echo ÇëÏÈË«»÷ ÔËÐÐ²âÊÔ.bat Ò»´Î£¬ÈÃ Maven ÏÂÔØÒÀÀµ¡£
+
   pause
+
   exit /b 1
+
 )
 
-rem 5) æ£€æŸ¥ç«¯å£å ç”¨ï¼ˆ8642 è¢«å ç”¨è¯´æ˜Žå·¥ä½œå°å¯èƒ½å·²åœ¨è¿è¡Œï¼Œç›´æŽ¥æ‰“å¼€æµè§ˆå™¨ï¼‰
+
+
+rem 5) ¼ì²é¶Ë¿ÚÕ¼ÓÃ£¨8642 ±»Õ¼ÓÃËµÃ÷¹¤×÷Ì¨¿ÉÄÜÒÑÔÚÔËÐÐ£¬Ö±½Ó´ò¿ªä¯ÀÀÆ÷£©
+
 set "PORT=8642"
+
 netstat -ano | findstr ":%PORT% " | findstr "LISTENING" >nul 2>nul
+
 if not errorlevel 1 (
-  echo ç«¯å£ %PORT% å·²è¢«å ç”¨ï¼šå·¥ä½œå°å¯èƒ½å·²ç»åœ¨è¿è¡Œï¼Œç›´æŽ¥æ‰“å¼€æµè§ˆå™¨ã€‚
+
+  echo ¶Ë¿Ú %PORT% ÒÑ±»Õ¼ÓÃ£º¹¤×÷Ì¨¿ÉÄÜÒÑ¾­ÔÚÔËÐÐ£¬Ö±½Ó´ò¿ªä¯ÀÀÆ÷¡£
+
   start "" "http://127.0.0.1:%PORT%/"
+
   pause
+
   exit /b 0
+
 )
 
-rem 6) å¯åŠ¨æœåŠ¡ï¼ˆå‰å°è¿è¡Œï¼Œå…³é—­æœ¬çª—å£å³åœæ­¢å·¥ä½œå°ï¼‰
-echo æ­£åœ¨å¯åŠ¨ JavaDS-Lab å­¦ä¹ å·¥ä½œå°ï¼ˆç«¯å£ %PORT%ï¼‰â€¦â€¦
-start "JavaDS-Lab å·¥ä½œå°" /min "%JAVA_EXE%" -Dfile.encoding=UTF-8 -cp "%CP%" com.javadslab.workbench.WorkbenchServer %PORT% "%ROOT%"
 
-rem 7) å¥åº·æ£€æŸ¥ï¼šæœ€å¤šç­‰ 30 ç§’ï¼ŒæˆåŠŸåŽè‡ªåŠ¨æ‰“å¼€æµè§ˆå™¨ï¼ˆÂ§34ï¼‰
+
+rem 6) Æô¶¯·þÎñ£¨Ç°Ì¨ÔËÐÐ£¬¹Ø±Õ±¾´°¿Ú¼´Í£Ö¹¹¤×÷Ì¨£©
+
+echo ÕýÔÚÆô¶¯ JavaDS-Lab Ñ§Ï°¹¤×÷Ì¨£¨¶Ë¿Ú %PORT%£©¡­¡­
+
+start "JavaDS-Lab ¹¤×÷Ì¨" /min "%JAVA_EXE%" -Dfile.encoding=UTF-8 -cp "%CP%" com.javadslab.workbench.WorkbenchServer %PORT% "%ROOT_ARG%"
+
+
+
+rem 7) ½¡¿µ¼ì²é£º×î¶àµÈ 30 Ãë£¬³É¹¦ºó×Ô¶¯´ò¿ªä¯ÀÀÆ÷£¨¡ì34£©
+
 set /a TRIES=0
+
 :waitloop
-timeout /t 1 /nobreak >nul
+
+ping -n 2 127.0.0.1 >nul
+
 curl -s -o nul http://127.0.0.1:%PORT%/api/health 2>nul
+
 if not errorlevel 1 goto ready
+
 set /a TRIES+=1
+
 if %TRIES% lss 30 goto waitloop
-echo [é”™è¯¯] æœåŠ¡åœ¨ 30 ç§’å†…æœªå°±ç»ªã€‚å¯èƒ½åŽŸå› ï¼š
-echo   - ç«¯å£è¢«å…¶ä»–ç¨‹åºå ç”¨ï¼ˆç¼–è¾‘æœ¬è„šæœ¬çš„ PORT å˜é‡ï¼‰
-echo   - é˜²ç«å¢™æ‹¦æˆªäº†æœ¬æœºç«¯å£
-echo è¯¦ç»†æ—¥å¿—ï¼š%ROOT%logs\workbench.log
+
+echo [´íÎó] ·þÎñÔÚ 30 ÃëÄÚÎ´¾ÍÐ÷¡£¿ÉÄÜÔ­Òò£º
+
+echo   - ¶Ë¿Ú±»ÆäËû³ÌÐòÕ¼ÓÃ£¨±à¼­±¾½Å±¾µÄ PORT ±äÁ¿£©
+
+echo   - ·À»ðÇ½À¹½ØÁË±¾»ú¶Ë¿Ú
+
+echo ÏêÏ¸ÈÕÖ¾£º%ROOT%logs\workbench.log
+
 pause
+
 exit /b 1
 
+
+
 :ready
-echo æœåŠ¡å°±ç»ªï¼Œæ­£åœ¨æ‰“å¼€æµè§ˆå™¨ï¼šhttp://127.0.0.1:%PORT%/
+
+echo ·þÎñ¾ÍÐ÷£¬ÕýÔÚ´ò¿ªä¯ÀÀÆ÷£ºhttp://127.0.0.1:%PORT%/
+
 start "" "http://127.0.0.1:%PORT%/"
+
 echo.
-echo å·¥ä½œå°å·²åœ¨åŽå°è¿è¡Œï¼ˆå…³é—­æœ¬çª—å£ä¸ä¼šåœæ­¢æœåŠ¡ï¼›
-echo åœæ­¢æœåŠ¡è¯·å…³é—­ä»»åŠ¡æ ä¸­æ ‡é¢˜ä¸º JavaDS-Lab å·¥ä½œå° çš„æœ€å°åŒ–çª—å£ï¼‰ã€‚
-timeout /t 4 /nobreak >nul
+
+echo ¹¤×÷Ì¨ÒÑÔÚºóÌ¨ÔËÐÐ£¨¹Ø±Õ±¾´°¿Ú²»»áÍ£Ö¹·þÎñ£»
+
+echo Í£Ö¹·þÎñÇë¹Ø±ÕÈÎÎñÀ¸ÖÐ±êÌâÎª JavaDS-Lab ¹¤×÷Ì¨ µÄ×îÐ¡»¯´°¿Ú£©¡£
+
+ping -n 5 127.0.0.1 >nul
+
 exit /b 0
+
