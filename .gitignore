@@ -6,3 +6,5 @@ target/
 *.iml
 .vscode/
 data/
+.v2c/
+.video_agent/
