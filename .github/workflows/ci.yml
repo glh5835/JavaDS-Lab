@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: # 允许在 Actions 页手动触发
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ci-${{ github.ref }}
+      cancel-in-progress: true # 连续 push 时只跑最新一次
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven # 缓存 ~/.m2 依赖，二次运行明显加速
+
+      # 本地用 tools/maven-settings.xml（阿里云镜像）；CI 网络直连 Maven Central 即可，无需该配置
+      - name: Run full test suite (181 tests)
+        run: mvn -B test
